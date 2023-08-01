@@ -11,7 +11,7 @@ import { forwardRef, useState } from 'react';
 import { Blurhash } from 'react-blurhash';
 import { ProfileIcon } from '../ProfileIcon';
 import { formatNumberWithCommas, hexToRGBA, timeAgo } from '@/utils';
-import { Post, User, UserPhoto } from '@/types';
+import { Post, UserPhoto } from '@/types';
 
 interface PostProps {
     post: Post | UserPhoto;
@@ -102,11 +102,13 @@ export function PostHeader({ post }: MetaProps) {
 export function PostFooter({ post }: MetaProps) {
     const [isLiked, setIsLiked] = useState(false);
 
+    console.log(post);
+
     return (
         <footer
             className={styles.postFooter__stacked}
             style={{
-                backgroundColor: hexToRGBA(post.color, 0.6),
+                backgroundColor: hexToRGBA(post.color, 0.2),
             }}
         >
             <div className={styles.postFooter__iconSection}>
@@ -143,11 +145,12 @@ export function PostFooter({ post }: MetaProps) {
                 </div>
             </div>
             <div className={styles.postLikes}>
-                {formatNumberWithCommas(isLiked ? post.likes + 1 : post.likes)}
-                &nbsp; likes &bull;&nbsp;
-                {formatNumberWithCommas(post.views)} views
+                {formatNumberWithCommas(isLiked ? post.likes + 1 : post.likes)}{' '}
+                likes
             </div>
-            {/* <div className={styles.postCaption}></div> */}
+            <div className={styles.postCaption}>
+                {post.description ?? post.alt_description}
+            </div>
         </footer>
     );
 }

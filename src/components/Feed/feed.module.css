@@ -6,11 +6,16 @@
     gap: 2rem;
 }
 
-.feedContainer__loadMore {
+.feedContainer__loadMore, .errorMessage {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    width: 100px;
-    height: 40px;
+    margin: var(--sp-xl);
+}
+
+.errorMessage {
+    flex-direction: column;
+    color: var(--inactive-color);
+    font-size: medium
 }

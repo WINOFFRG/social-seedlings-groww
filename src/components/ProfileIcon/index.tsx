@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './profileIcon.module.css';
 import Link from 'next/link';
 import { cache } from '@/utils';
-import { Post, User } from '@/types';
+import { User } from '@/types';
 
 interface ProfileIconProps {
     user: User;

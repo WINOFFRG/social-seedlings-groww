@@ -6,7 +6,7 @@ import {
     IntersectionObserverHookRootRefCallback as UseInfiniteScrollHookRootRefCallback,
 } from 'react-intersection-observer-hook';
 
-export {
+export type {
     UseInfiniteScrollHookRefCallback,
     UseInfiniteScrollHookRootRefCallback,
 };

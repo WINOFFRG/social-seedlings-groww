@@ -1,21 +1,16 @@
-import { getPosts } from '@/api/posts';
 import styles from './recentlyViewed.module.css';
 import { ProfileIcon } from '../ProfileIcon';
 import { useEffect, useState } from 'react';
 import { useWindowScroll } from '@/hooks/useWindowsScroll';
 import { ChevronDownIcon, GithubIcon } from '../Icons';
 import Link from 'next/link';
-import { cache, isServer } from '@/utils';
+import { cache } from '@/utils';
 import { User } from '@/types';
 import { useStore } from '@/store';
 import { useRouter } from 'next/router';
 import { useIsClient } from '@/hooks/useIsClient';
 
-function UserProfile({
-    user,
-}: {
-    user: ReturnType<typeof getPosts>[number]['user'];
-}) {
+function UserProfile({ user }: { user: User }) {
     const [isFollowed, setIsFollowed] = useState(false);
 
     return (
@@ -61,6 +56,7 @@ export function RecentlyViewed() {
         const currentUsers: User[] = [];
         const uniqueUsers = new Set();
 
+        // @ts-ignore
         cache.forEach((value: User) => {
             if (uniqueUsers.has(value.id)) return;
             currentUsers.push(value);
@@ -73,7 +69,7 @@ export function RecentlyViewed() {
         return () => {
             console.log('[RecentlyViewed] Unmounted');
         };
-    }, [router.asPath]);
+    }, [router.asPath, setRecentUsers]);
 
     return (
         <section className={styles.contentWrapper}>

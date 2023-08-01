@@ -1,5 +1,5 @@
 import styles from './header.module.css';
-import { MoonIcon, SearchIcon, SunIcon } from '../Icons';
+import { MoonIcon, SunIcon } from '../Icons';
 import { useState } from 'react';
 import Link from 'next/link';
 

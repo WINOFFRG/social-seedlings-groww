@@ -28,8 +28,11 @@
     display: flex;
     flex-direction: row;
     gap: var(--sp-l);
-    font-size: small;
-    
+}
+
+.profileSection_userStats  {
+    font-weight: 400;
+    color: var(--content-title-color);
 }
 
 .profileSection_userBio {
@@ -96,6 +99,15 @@
 .profile__viewButton_active {
     background-color: var(--theme-color);
     color: var(--theme-bg-color);
+}
+
+.profile__viewButton:hover {
+    opacity: 0.8;
+}
+
+.profile__viewButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .buttonsWrapper {

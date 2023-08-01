@@ -3,12 +3,16 @@ import { HomeFeed } from '@/components/Feed';
 import { HtmlHead } from '@/components/HtmlHead';
 import { RecentlyViewed } from '@/components/RecentlyViewed';
 import { StorySection } from '@/components/StorySection';
-import type { GetServerSideProps } from 'next';
-import { getPosts } from '@/api/posts';
-import { Post, Posts } from '@/types';
+import type { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { Posts } from '@/types';
 import { useStore } from '@/store';
+import { unsplashFetch } from '@/utils';
 
-export default function Home({ posts = [] }: { posts: Posts }) {
+interface HomeProps {
+    posts: Posts;
+}
+
+export default function Home({ posts }: HomeProps) {
     const setPosts = useStore((state) => state.setPosts);
     setPosts(posts);
 
@@ -28,12 +32,10 @@ export default function Home({ posts = [] }: { posts: Posts }) {
     );
 }
 
-export const getServerSideProps: GetServerSideProps<{
-    posts: Post[];
-}> = async () => {
-    // const posts = await fetch(
-    //     'http://localhost:3000/api/posts?limit=10&page=0',
-    // ).then((res) => res.json());
-    const posts = getPosts();
+export const getServerSideProps: GetServerSideProps<HomeProps> = async ({
+    res,
+}: GetServerSidePropsContext) => {
+    res.setHeader('Cache-Control', 'public, s-maxage=3600');
+    const posts = await unsplashFetch(`/photos`);
     return { props: { posts } };
 };

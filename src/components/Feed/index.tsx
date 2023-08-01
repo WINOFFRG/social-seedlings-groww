@@ -1,28 +1,27 @@
-import { getPosts } from '@/api/posts';
 import styles from './feed.module.css';
 import { PhotoPost } from '../Post';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import { useLoadItems } from '@/hooks/useLoadMore';
 import { useStore } from '@/store';
-import { LoadingDots } from '../Loading';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { unsplashFetch } from '@/utils';
+import { InfiniteScroll } from '../InfiniteScroll';
+import { useCallback } from 'react';
 
 export function HomeFeed() {
     const posts = useStore((state) => state.posts);
 
-    const getMoreItems = async (page, limit) => {
-        const posts = await getPosts();
-        return posts;
-    };
+    const getMoreItems = useCallback((page: number) => {
+        return async () => {
+            return unsplashFetch(`/photos`, `page=${page}`);
+        };
+    }, []);
 
-    const { loading, items, hasNextPage, error, loadMore, page } = useLoadItems(
+    const { loading, items, hasNextPage, error, loadMore } = useLoadItems(
         getMoreItems,
         posts,
     );
 
-    const isMobile = useMediaQuery('(min-width: 768px)');
-
-    const [sentryRef] = useInfiniteScroll({
+    const [elementRef] = useInfiniteScroll({
         loading,
         hasNextPage,
         onLoadMore: loadMore,
@@ -39,11 +38,7 @@ export function HomeFeed() {
                     );
                 })}
             </div>
-            <div className={styles.feedContainer__loadMore} ref={sentryRef}>
-                {loading && <LoadingDots />}
-                {error && 'Error'}
-                {!hasNextPage && 'No more posts'}
-            </div>
+            <InfiniteScroll ref={elementRef} loading={loading} error={error} />
         </>
     );
 }

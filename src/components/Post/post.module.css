@@ -110,3 +110,8 @@
 .dotIcon {
     cursor: not-allowed;
 }
+
+.postCaption {
+    font-size: small;
+    color: var(--content-title-color);
+}

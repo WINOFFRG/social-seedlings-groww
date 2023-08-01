@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Posts, User } from './types';
-import { persist, devtools } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 
 interface BearState {
     posts: Posts;
@@ -11,8 +11,9 @@ interface BearState {
     setRecentUsers: (users: User[]) => void;
 }
 
-const chainedMiddleware = (f) =>
-    devtools(persist(f, { name: 'cache-storage' }));
+// First I will check if TS working properly then using chaining
+// const chainedMiddleware = (f) =>
+//     devtools(persist(f, { name: 'cache-storage' }));
 
 export const useStore = create<BearState>()(
     persist(

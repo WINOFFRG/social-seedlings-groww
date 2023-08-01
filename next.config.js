@@ -9,6 +9,9 @@ const nextConfig = {
         UNSPLASH_SECRET_KEY: process.env.UNSPLASH_SECRET_KEY,
         API_URL: process.env.API_URL,
     },
+    experimental: {
+        scrollRestoration: true,
+    },
 };
 
 module.exports = nextConfig;
