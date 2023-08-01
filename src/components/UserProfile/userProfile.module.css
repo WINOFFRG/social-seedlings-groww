@@ -36,5 +36,15 @@
 .profile__bottomSection {
     display: flex;
     flex: 1;
-    gap: var(--sp-l);
+    flex-wrap: wrap;
+    gap: var(--sp-xl);
+    width: 100%;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin-top: var(--sp-xl);
+    margin-bottom: var(--sp-xl);
 }

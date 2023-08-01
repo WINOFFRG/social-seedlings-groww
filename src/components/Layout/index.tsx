@@ -25,6 +25,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     ></rect>
                 </svg>
                 <div className={styles.sectionWrapper}>{children}</div>
+
                 <div className={styles.gradient}>
                     <div className={styles.background}></div>
                 </div>

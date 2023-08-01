@@ -1,9 +1,9 @@
-import { User } from '@/types';
+import { User, UserProfileProps } from '@/types';
 import { ProfileIcon } from '../ProfileIcon';
 import styles from './userProfile.module.css';
 import { PhotoPost } from '../Post';
 
-export function UserProfile({ user }: { user: User }) {
+export function UserProfile({ user, userPhotos }: UserProfileProps) {
     return (
         <>
             <section className={styles.userProfileSection}>
@@ -30,9 +30,10 @@ export function UserProfile({ user }: { user: User }) {
                     </div>
                 </div>
             </section>
+            <hr className={styles.divider} />
             <div className={styles.profile__bottomSection}>
-                {user.photos.map((photo) => (
-                    <PhotoPost post={photo} withMeta={false} size={200} />
+                {userPhotos.map((photo) => (
+                    <PhotoPost post={photo} withMeta={false} size={300} />
                 ))}
             </div>
         </>

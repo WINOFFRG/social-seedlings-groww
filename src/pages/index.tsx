@@ -31,6 +31,9 @@ export default function Home({ posts = [] }: { posts: Posts }) {
 export const getServerSideProps: GetServerSideProps<{
     posts: Post[];
 }> = async () => {
+    // const posts = await fetch(
+    //     'http://localhost:3000/api/posts?limit=10&page=0',
+    // ).then((res) => res.json());
     const posts = getPosts();
     return { props: { posts } };
 };

@@ -9,7 +9,11 @@
 .contentWrapper {
     min-width: 300px;
     position: sticky;
-    top: 100px;   
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-s);
+
 }
 
 .contentWrapper__container__item {
@@ -50,4 +54,29 @@
 
 .followBtn:hover {
     color: white;
+}
+
+.carouselButton {
+    border-radius: 50%;
+    background: var(--content-bg);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 120ms;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.carouselButton:hover {
+    background: var(--dropdown-hover);
+}
+
+.sidebar__lowerSection {
+    margin-top: var(--sp-xl);
+    margin-left: var(--sp-s);
+    display: flex;
+    flex-direction: row;
+    gap: var(--sp-l);
 }

@@ -2,6 +2,9 @@ import { getPosts } from '@/api/posts';
 import styles from './recentlyViewed.module.css';
 import { ProfileIcon } from '../ProfileIcon';
 import { useState } from 'react';
+import { useWindowScroll } from '@/hooks/useWindowsScroll';
+import { ChevronDownIcon, GithubIcon } from '../Icons';
+import Link from 'next/link';
 
 function UserProfile({
     user,
@@ -42,13 +45,28 @@ function UserProfile({
 export function RecentlyViewed() {
     const posts = getPosts();
 
+    const [, scrollTo] = useWindowScroll();
+
     return (
         <section className={styles.contentWrapper}>
-            <h2 className={styles.title}>Recently Viewed</h2>
-            <div className={styles.contentWrapper__container}>
-                {posts.map((post) => (
-                    <UserProfile user={post.user} key={post.id} />
-                ))}
+            <div className={styles.sidebar__upperSection}>
+                <h2 className={styles.title}>Recently Viewed</h2>
+                <div className={styles.contentWrapper__container}>
+                    {posts.map((post) => (
+                        <UserProfile user={post.user} key={post.id} />
+                    ))}
+                </div>
+            </div>
+            <div className={styles.sidebar__lowerSection}>
+                <button
+                    className={styles.carouselButton}
+                    onClick={() => scrollTo({ x: 0, y: 0 })}
+                >
+                    <ChevronDownIcon />
+                </button>
+                <Link href="https://github.com/winoffrg">
+                    <GithubIcon />
+                </Link>
             </div>
         </section>
     );

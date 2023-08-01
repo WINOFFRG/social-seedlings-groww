@@ -1,21 +1,22 @@
-import { getUser } from '@/api/user';
+import { getUser, getUserPhotos } from '@/api/user';
 import { HtmlHead } from '@/components/HtmlHead';
 import { UserProfile } from '@/components/UserProfile';
-import { User } from '@/types';
+import { UserProfileProps } from '@/types';
 import { GetServerSideProps } from 'next';
 
-export default function Profile({ user }: { user: User }) {
+export default function Profile({ user, userPhotos }: UserProfileProps) {
     return (
         <>
             <HtmlHead />
-            <UserProfile user={user} />
+            <UserProfile user={user} userPhotos={userPhotos} />
         </>
     );
 }
 
-export const getServerSideProps: GetServerSideProps<{
-    user: User;
-}> = async () => {
+export const getServerSideProps: GetServerSideProps<
+    UserProfileProps
+> = async () => {
     const user = getUser();
-    return { props: { user } };
+    const userPhotos = getUserPhotos();
+    return { props: { user, userPhotos } };
 };
