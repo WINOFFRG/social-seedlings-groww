@@ -17,6 +17,8 @@ interface PostProps {
     post: Post | UserPhoto;
     withMeta?: boolean;
     size?: number;
+    height?: number;
+    width?: number;
 }
 
 interface MetaProps {
@@ -25,7 +27,7 @@ interface MetaProps {
 
 // eslint-disable-next-line react/display-name
 export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
-    ({ post, withMeta = true, size = 400, ...props }, ref) => {
+    ({ post, withMeta = true, size = 400, width, height, ...props }, ref) => {
         const [isPostLoaded, setIsPostLoaded] = useState(false);
 
         return (
@@ -37,8 +39,8 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
                         loading="lazy"
                         src={post.urls.regular}
                         alt={post.alt_description ?? 'Post Image'}
-                        width={size}
-                        height={size}
+                        width={width ?? size}
+                        height={height ?? size}
                         onLoadingComplete={() => {
                             setIsPostLoaded(true);
                         }}
@@ -56,8 +58,8 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
                             !withMeta ? styles.postImage__withMeta : ''
                         }`}
                         hash={post.blur_hash}
-                        height={size}
-                        width={size}
+                        height={height ?? size}
+                        width={width ?? size}
                         style={{
                             objectFit: 'cover',
                             opacity: isPostLoaded ? 0 : 1,
@@ -101,8 +103,6 @@ export function PostHeader({ post }: MetaProps) {
 
 export function PostFooter({ post }: MetaProps) {
     const [isLiked, setIsLiked] = useState(false);
-
-    console.log(post);
 
     return (
         <footer

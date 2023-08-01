@@ -2,13 +2,11 @@
     --header-position: sticky; /* Change to 'relative' for position: relative */
     --header-background: initial; /* Change to theme.other.color.pageBg for background based on condition */
     --header-transition-duration: 400ms;
-    --header-layer: /* Set the desired z-index for header */;
-    --removed-body-scroll-bar-size: /* Set the size when scroll bar is removed */;
-    
-    /* mine */
+
     --header-z-index: 100;
     --header-height: 60px;
     --std-radius: 10px;
+    --radius-half: 50%;
 
     --sp-s: 0.5rem;
     --sp-m: 0.75rem;
@@ -17,14 +15,12 @@
     --round-s: 0.25rem;
     --round-m: 0.5rem;
     --round-l: 1rem;
-  }
 
-  :root {
     --theme-bg-color: #1a1a1a;
     --border-color: rgba(113 119 144 / 25%);
     --theme-color: #f9fafb;
     --inactive-color: rgb(113 119 144 / 78%);
-    --body-font: "Poppins", sans-serif;
+    --body-font: 'Poppins', sans-serif;
     --hover-menu-bg: rgba(12 15 25 / 30%);
     --content-title-color: #999ba5;
     --content-bg: rgb(146 151 179 / 13%);
@@ -35,12 +31,16 @@
     --search-bg: rgb(255 255 255 / 20%);
     --overlay-bg: rgba(36, 39, 59, 0.3);
     --scrollbar-bg: rgb(1 2 3 / 40%);
-    
 
     --insta-ring: #f09433;
-  }
-  
-  .light-mode {
+    --bg-filter: invert(0);
+    --bp-sm: 576px;
+    --bp-md: 768px;
+    --bp-lg: 992px;
+    --bp-xl: 1200px;
+}
+
+.light-mode {
     --theme-bg-color: rgb(255 255 255 / 31%);
     --theme-color: #3c3a3a;
     --inactive-color: #333333;
@@ -54,36 +54,158 @@
     --hover-menu-bg: rgba(255 255 255 / 35%);
     --scrollbar-bg: rgb(255 253 253 / 57%);
     --content-title-color: --theme-color;
-  }
 
-  body {
+    --insta-ring: #f09433;
+    --bg-filter: invert(1);
+}
+
+body {
     background-color: var(--theme-bg-color);
     color: var(--theme-color);
     font-family: var(--body-font);
     transition: background-color 0.5s ease-in-out;
     scroll-behavior: smooth;
     overflow-x: hidden;
-  }
+}
 
-    ::selection {
-        background-color: rgba(168,85,247,.9);
-    }
+::selection {
+    background-color: rgba(168, 85, 247, 0.9);
+}
 
-  /* create a fade in animation class */
-
-  .fadeIn {
+.fadeIn {
     animation: fadeIn ease 1s;
     -webkit-animation: fadeIn ease 1s;
     -moz-animation: fadeIn ease 1s;
     -o-animation: fadeIn ease 1s;
     -ms-animation: fadeIn ease 1s;
-  }
+}
 
-    @keyframes fadeIn {
-        0% {
+@keyframes fadeIn {
+    0% {
         opacity: 0;
-        }
-        100% {
-        opacity: 1;
-        }
     }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes bell {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    45% {
+        transform: rotate(-10deg);
+    }
+    55% {
+        transform: rotate(8deg);
+    }
+    60% {
+        transform: rotate(-8deg);
+    }
+}
+@keyframes bellClapper {
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(-0.15em);
+    }
+    45% {
+        transform: translateX(0.15em);
+    }
+    55% {
+        transform: translateX(-0.1em);
+    }
+    60% {
+        transform: translateX(0.1em);
+    }
+}
+@keyframes notification {
+    0%,
+    25%,
+    75%,
+    100% {
+        opacity: 1;
+    }
+    30%,
+    70% {
+        opacity: 0;
+    }
+}
+
+/* Mode Theme */
+
+.toggle {
+    --size: 2rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: 999px;
+    color: #e6e6ff;
+    transition: all 500ms;
+}
+
+.toggle:checked {
+    --ray-size: calc(var(--size) * -0.4);
+    --offset-orthogonal: calc(var(--size) * 0.65);
+    --offset-diagonal: calc(var(--size) * 0.45);
+    transform: scale(0.75);
+    color: #ffaa00;
+    box-shadow:
+        inset 0 0 0 var(--size),
+        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+        var(--offset-orthogonal) 0 0 var(--ray-size),
+        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+        0 var(--offset-orthogonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0
+            var(--ray-size),
+        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0
+            var(--ray-size),
+        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0
+            var(--ray-size);
+}
+
+.background {
+    --bg: hsl(240, 100%, 10%);
+    background: var(--bg);
+    /* position: fixed; */
+    /* height: 100vh; */
+    /* width: 100vw; */
+    transition: background 500ms;
+}
+
+.toggle {
+    z-index: 1;
+}
+.toggle:checked ~ .background {
+    --bg: white;
+}
+.toggle:checked ~ .title {
+    --color: hsl(40, 100%, 50%);
+}
+
+.title {
+    --color: hsl(240, 100%, 95%);
+    color: var(--color);
+    z-index: 1;
+    cursor: pointer;
+    display: block;
+    padding: 0.5rem 0 0;
+    transition: color 500ms;
+}

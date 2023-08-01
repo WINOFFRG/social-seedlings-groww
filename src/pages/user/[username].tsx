@@ -1,4 +1,4 @@
-import { HtmlHead } from '@/components/HtmlHead';
+import { HtmlHead } from '@/components/MetaTags';
 import { UserProfile } from '@/components/UserProfile';
 import { UserProfileProps } from '@/types';
 import { unsplashFetch } from '@/utils';

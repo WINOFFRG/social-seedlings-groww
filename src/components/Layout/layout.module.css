@@ -14,9 +14,8 @@
     height: 100%; 
     opacity: .3;
     background-repeat: no-repeat;
-    background-image: url(https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9);
-    /* invert color of background image for light mode*/
-    /* filter: invert(1); */
+    background-image: url(/bg_gradient_pfosr9.jpeg);
+    filter: var(--bg-filter);
 }
 
 .svg {

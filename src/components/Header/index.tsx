@@ -1,5 +1,5 @@
 import styles from './header.module.css';
-import { MoonIcon, SunIcon } from '../Icons';
+import { BellIcon, MoonIcon, SunIcon } from '../Icons';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -24,23 +24,15 @@ export function Header() {
                 <div className={styles.header__rightSection}>
                     <div className={styles.notification}>
                         <span className={styles.notificationNumber}>3</span>
-                        🔔
+                        <BellIcon />
                     </div>
-                    <button
-                        className={styles.themeSwitcher}
+                    <input
+                        title="Toggle Theme"
+                        id="toggle"
+                        className="toggle"
+                        type="checkbox"
                         onClick={handleThemeSwitch}
-                    >
-                        {isLightMode ? <SunIcon /> : <MoonIcon />}
-                    </button>
-                    {/* <Image
-                        src={
-                            'https://images.unsplash.com/photo-1600353068440-6361ef3a86e8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'
-                        }
-                        height={32}
-                        width={32}
-                        alt="Profile Image"
-                        className={styles.profileImg}
-                    /> */}
+                    />
                 </div>
             </div>
         </header>

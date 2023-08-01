@@ -1,6 +1,6 @@
 import styles from '@/styles/Home.module.css';
 import { HomeFeed } from '@/components/Feed';
-import { HtmlHead } from '@/components/HtmlHead';
+import { HtmlHead } from '@/components/MetaTags';
 import { RecentlyViewed } from '@/components/RecentlyViewed';
 import { StorySection } from '@/components/StorySection';
 import type { GetServerSideProps, GetServerSidePropsContext } from 'next';

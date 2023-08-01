@@ -33,8 +33,16 @@ export function HomeFeed() {
         <>
             <div className={styles.feedContainer}>
                 {items.map((post, index) => {
+                    const newWidth = 400;
+                    const newHeight = (newWidth * post.height) / post.width;
+
                     return (
-                        <PhotoPost key={`${post.id}:${index}`} post={post} />
+                        <PhotoPost
+                            key={`${post.id}:${index}`}
+                            post={post}
+                            height={newHeight}
+                            width={newWidth}
+                        />
                     );
                 })}
             </div>

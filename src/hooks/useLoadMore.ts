@@ -19,7 +19,6 @@ export function useLoadItems(
         setLoading(true);
         try {
             const data = await callback(page)();
-            console.log(callback, page, data);
             setItems((current) => [...current, ...data]);
             setHasNextPage(data.length === ARRAY_SIZE);
         } catch (error) {

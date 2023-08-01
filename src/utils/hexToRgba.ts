@@ -7,7 +7,6 @@ export function hexToRGBA(hex: string, alpha: number = 1): string {
     // Validate the input format
     const hexRegex = /^[0-9A-Fa-f]{6}$/;
     if (!hexRegex.test(hex)) {
-        console.error('Invalid hexadecimal color code.');
         return '';
     }
 
@@ -18,7 +17,6 @@ export function hexToRGBA(hex: string, alpha: number = 1): string {
 
     // Validate alpha value
     if (alpha < 0 || alpha > 1) {
-        console.error('Alpha value must be between 0 and 1.');
         return '';
     }
 
