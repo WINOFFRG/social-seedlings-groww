@@ -1,0 +1,20 @@
+{
+	"files.exclude": {
+		// "**/node_modules": true,
+		// "**/.next": true
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"editor.formatOnSave": true, // Tell VSCode to format files on save
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}, // Tell VSCode to use Prettier as default file formatter,
+	"json.schemas": [
+		{
+			"url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
+			"fileMatch": ["package.json", "tsup.config.json"]
+		}
+	]
+}

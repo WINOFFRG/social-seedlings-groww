@@ -1,0 +1,119 @@
+.Illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: min-content;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.039),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.057),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.07),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.083),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.101),
+    100px 100px 80px rgba(0, 0, 0, 0.14);
+    --post-desktop-padding: var(--sp-m);
+    --post-mobile-padding: calc(var(--sp-m) / 2);
+}
+
+.postHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--post-desktop-padding);
+    width: 100%;
+    border-radius: var(--std-radius) var(--std-radius) 0 0;
+    min-height: 60px;
+}
+
+.postHeader__leftSection {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-m);
+}
+
+.postFooter__stacked {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    padding: var(--post-desktop-padding);
+    width: 100%;
+    border-radius: 0 0 var(--std-radius) var(--std-radius);
+    min-height: 60px;
+    gap: var(--sp-s);
+}
+
+.postFooter__leftSection {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-m);
+}
+
+.postFooter__rightSection {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-m);
+}
+
+.postFooter__iconSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    gap: var(--sp-s);
+}
+
+.postImage__wrapper {
+    overflow: hidden;
+}
+
+.postHeader__userInfo {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.postLikes {
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 0.5rem; */
+}
+
+.postCaption {
+    padding: var(--post-desktop-padding);
+    width: min-content;
+    border-radius: 0 0 var(--std-radius) var(--std-radius);
+    min-height: 60px;
+    /* dont overflow sentences */
+}
+
+.postCaption span {
+    display: inline-block;
+    color: var(--text-color);
+    overflow-wrap: break-word;   
+    word-wrap: break-word;
+}
+
+.postFooter__iconButton {
+    cursor: pointer;
+}
+
+.likeButton:hover path {
+    fill: #ed4956;
+}
+
+.saveButton:hover path{
+    stroke: #73d3d0;
+}
+
+.shareButton:hover path{
+    fill: #27d9d5;
+}
+
+.commentsButton:hover path{
+    stroke: #24a0ed;
+}
+
+.dotIcon {
+    cursor: not-allowed;
+}

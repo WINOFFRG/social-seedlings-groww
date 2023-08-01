@@ -1,0 +1,33 @@
+{
+  "name": "groww",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "eslint-config-next": "13.4.12",
+    "next": "13.4.12",
+    "nprogress": "^0.2.0",
+    "react": "18.2.0",
+    "react-blurhash": "^0.3.0",
+    "react-dom": "18.2.0",
+    "react-intersection-observer-hook": "^2.1.1",
+    "typescript": "5.1.6",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "eslint": "8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "react-hooks": "^1.0.1"
+  }
+}

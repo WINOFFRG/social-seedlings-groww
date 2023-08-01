@@ -1,0 +1,53 @@
+.gradient {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.background {
+    transform: translateY(0px);
+    width: 100%;
+    height: 100%; 
+    opacity: .3;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/delba/image/upload/h_500/bg_gradient_pfosr9);
+    /* invert color of background image for light mode*/
+    /* filter: invert(1); */
+}
+
+.svg {
+    /* pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light */
+    pointer-events: none;
+    position: fixed;
+    isolation: isolate;
+    opacity: .7;
+    mix-blend-mode: soft-light;
+}
+
+.main {
+    padding-top: var(--header-height);
+    position: relative;
+}
+
+.sectionWrapper {
+    padding-top: var(--sp-xl);
+    margin: 0 auto;
+    margin-bottom: calc(2 * var(--sp-xl));
+}
+
+@media (min-width: 1280px) {
+    .sectionWrapper {
+        grid-template-columns: minmax(0, 1fr) max-content;
+        max-width: 950px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .sectionWrapper {
+        max-width: 950px;
+    }
+}

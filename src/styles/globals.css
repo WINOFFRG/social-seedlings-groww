@@ -1,0 +1,89 @@
+:root {
+    --header-position: sticky; /* Change to 'relative' for position: relative */
+    --header-background: initial; /* Change to theme.other.color.pageBg for background based on condition */
+    --header-transition-duration: 400ms;
+    --header-layer: /* Set the desired z-index for header */;
+    --removed-body-scroll-bar-size: /* Set the size when scroll bar is removed */;
+    
+    /* mine */
+    --header-z-index: 100;
+    --header-height: 60px;
+    --std-radius: 10px;
+
+    --sp-s: 0.5rem;
+    --sp-m: 0.75rem;
+    --sp-l: 1rem;
+    --sp-xl: 1.5rem;
+    --round-s: 0.25rem;
+    --round-m: 0.5rem;
+    --round-l: 1rem;
+  }
+
+  :root {
+    --theme-bg-color: #1a1a1a;
+    --border-color: rgba(113 119 144 / 25%);
+    --theme-color: #f9fafb;
+    --inactive-color: rgb(113 119 144 / 78%);
+    --body-font: "Poppins", sans-serif;
+    --hover-menu-bg: rgba(12 15 25 / 30%);
+    --content-title-color: #999ba5;
+    --content-bg: rgb(146 151 179 / 13%);
+    --button-inactive: rgb(249 250 251 / 55%);
+    --dropdown-bg: #21242d;
+    --dropdown-hover: rgb(42 46 60);
+    --popup-bg: rgb(22 25 37);
+    --search-bg: rgb(255 255 255 / 20%);
+    --overlay-bg: rgba(36, 39, 59, 0.3);
+    --scrollbar-bg: rgb(1 2 3 / 40%);
+    
+
+    --insta-ring: #f09433;
+  }
+  
+  .light-mode {
+    --theme-bg-color: rgb(255 255 255 / 31%);
+    --theme-color: #3c3a3a;
+    --inactive-color: #333333;
+    --button-inactive: #3c3a3a;
+    --search-bg: rgb(255 255 255 / 31%);
+    --dropdown-bg: #f7f7f7;
+    --overlay-bg: rgb(255 255 255 / 30%);
+    --dropdown-hover: rgb(236 236 236);
+    --border-color: rgb(255 255 255 / 35%);
+    --popup-bg: rgb(255 255 255);
+    --hover-menu-bg: rgba(255 255 255 / 35%);
+    --scrollbar-bg: rgb(255 253 253 / 57%);
+    --content-title-color: --theme-color;
+  }
+
+  body {
+    background-color: var(--theme-bg-color);
+    color: var(--theme-color);
+    font-family: var(--body-font);
+    transition: background-color 0.5s ease-in-out;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+    ::selection {
+        background-color: rgba(168,85,247,.9);
+    }
+
+  /* create a fade in animation class */
+
+  .fadeIn {
+    animation: fadeIn ease 1s;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
+  }
+
+    @keyframes fadeIn {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        opacity: 1;
+        }
+    }

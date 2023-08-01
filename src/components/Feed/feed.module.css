@@ -1,0 +1,16 @@
+.feedContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feedContainer__loadMore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100px;
+    height: 40px;
+}

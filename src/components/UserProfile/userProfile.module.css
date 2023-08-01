@@ -1,0 +1,40 @@
+.userProfileSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.profile__rightSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: var(--sp-l);
+}
+
+.welcomeTitle {
+    font-size: 2rem;
+    /* font-weight: 600; */
+}
+
+.profileSection_userStats {
+    display: flex;
+    flex-direction: row;
+    gap: var(--sp-l);
+    font-size: small;
+    
+}
+
+.profileSection_userBio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-m);
+    font-size: small;
+}
+
+.profile__bottomSection {
+    display: flex;
+    flex: 1;
+    gap: var(--sp-l);
+}
