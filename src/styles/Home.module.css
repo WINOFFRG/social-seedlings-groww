@@ -41,6 +41,6 @@
 @media (min-width: 1024px) and (max-width: 1279px) {
 
     .sectionWrapper__container {
-        grid-template-columns: minmax(0, 1fr) max-content;
+        /* grid-template-columns: minmax(0, 1fr) max-content; */
     }
 }

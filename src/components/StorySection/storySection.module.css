@@ -16,6 +16,12 @@
     display: none;
 }
 
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-s);
+}
+
 .imageContainer picture {
     display: flex;
     justify-content: center;
@@ -29,7 +35,7 @@
             #cc2366 75%,
             #bc1888 100%
         );
-    padding: 5px;
+    padding: var(--sp-s);
     border-radius: 50%;
 }
 

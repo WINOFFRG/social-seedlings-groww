@@ -15,12 +15,14 @@ export function StorySection() {
                             key={post.id}
                         >
                             <div className={styles.storySection__story__image}>
-                                <figure className={styles.imageContainer}>
+                                <figure
+                                    className={styles.imageContainer}
+                                    title={post.user.username}
+                                >
                                     <ProfileIcon
-                                        src={post.user.profile_image.medium}
-                                        hasStory={true}
                                         size={64}
-                                        username={post.user.username}
+                                        user={post.user}
+                                        showStory={true}
                                     />
                                     <figcaption
                                         className={

@@ -13,6 +13,7 @@
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "eslint-config-next": "13.4.12",
+    "lru-cache": "^10.0.0",
     "next": "13.4.12",
     "nprogress": "^0.2.0",
     "react": "18.2.0",

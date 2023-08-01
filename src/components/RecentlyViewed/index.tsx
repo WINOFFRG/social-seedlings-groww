@@ -1,10 +1,15 @@
 import { getPosts } from '@/api/posts';
 import styles from './recentlyViewed.module.css';
 import { ProfileIcon } from '../ProfileIcon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useWindowScroll } from '@/hooks/useWindowsScroll';
 import { ChevronDownIcon, GithubIcon } from '../Icons';
 import Link from 'next/link';
+import { cache, isServer } from '@/utils';
+import { User } from '@/types';
+import { useStore } from '@/store';
+import { useRouter } from 'next/router';
+import { useIsClient } from '@/hooks/useIsClient';
 
 function UserProfile({
     user,
@@ -16,12 +21,7 @@ function UserProfile({
     return (
         <div className={styles.contentWrapper__container__item}>
             <div className={styles.contentWrapper__leftSection}>
-                <ProfileIcon
-                    src={user.profile_image.medium}
-                    size={42}
-                    // isOnline={Math.random() > 0.5}
-                    // hasStory={Math.random() > 0.5}
-                />
+                <ProfileIcon user={user} size={42} showOnline />
                 <div className={styles.userProfile_desc}>
                     <h3>{user.username}</h3>
                     <p>Followed By</p>
@@ -43,31 +43,71 @@ function UserProfile({
 }
 
 export function RecentlyViewed() {
-    const posts = getPosts();
+    const [cachedUsers, setCachedUsers] = useState<User[]>([]);
+    const recentUsers = useStore((state) => state.recentUsers);
+    const setRecentUsers = useStore((state) => state.setRecentUsers);
+    const isClient = useIsClient();
 
-    const [, scrollTo] = useWindowScroll();
+    const router = useRouter();
+
+    useEffect(() => {
+        recentUsers.forEach((user) => {
+            if (cache.has(user.id)) return;
+            cache.set(user.id, user);
+        });
+    }, []);
+
+    useEffect(() => {
+        const currentUsers: User[] = [];
+        const uniqueUsers = new Set();
+
+        cache.forEach((value: User) => {
+            if (uniqueUsers.has(value.id)) return;
+            currentUsers.push(value);
+            uniqueUsers.add(value.id);
+        });
+
+        setCachedUsers(currentUsers);
+        setRecentUsers(currentUsers);
+
+        return () => {
+            console.log('[RecentlyViewed] Unmounted');
+        };
+    }, [router.asPath]);
 
     return (
         <section className={styles.contentWrapper}>
             <div className={styles.sidebar__upperSection}>
                 <h2 className={styles.title}>Recently Viewed</h2>
-                <div className={styles.contentWrapper__container}>
-                    {posts.map((post) => (
-                        <UserProfile user={post.user} key={post.id} />
-                    ))}
-                </div>
+                {isClient && (
+                    <div className={styles.contentWrapper__container}>
+                        {cachedUsers.map((user: User) => (
+                            <UserProfile user={user} key={user.id} />
+                        ))}
+                    </div>
+                )}
             </div>
             <div className={styles.sidebar__lowerSection}>
-                <button
-                    className={styles.carouselButton}
-                    onClick={() => scrollTo({ x: 0, y: 0 })}
-                >
-                    <ChevronDownIcon />
-                </button>
+                <Affix />
                 <Link href="https://github.com/winoffrg">
                     <GithubIcon />
                 </Link>
             </div>
+            <span className={styles.footerText}>Made with ❤️ by @winoffrg</span>
         </section>
+    );
+}
+
+// Keep this as low as possible because hook causes re-render on every scroll
+function Affix() {
+    const [, scrollTo] = useWindowScroll();
+
+    return (
+        <button
+            className={styles.carouselButton}
+            onClick={() => scrollTo({ x: 0, y: 0 })}
+        >
+            <ChevronDownIcon />
+        </button>
     );
 }

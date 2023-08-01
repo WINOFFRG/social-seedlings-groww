@@ -1,9 +1,5 @@
-import { Posts } from '@/types';
+import { ErrorData, Posts } from '@/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-interface ErrorData {
-    message: string;
-}
 
 export default async function handler(
     req: NextApiRequest,
@@ -12,14 +8,12 @@ export default async function handler(
     try {
         const { page, limit = 10 } = req.query;
 
-        // Check if page and limit params are passed, otherwise return error
         if (!page) {
             return res.status(400).json({
                 message: 'Missing query params: page and limit required',
             });
         }
 
-        //check if page and limit are strings
         if (Array.isArray(page) || Array.isArray(limit)) {
             return res.status(400).json({
                 message: 'Query params should be of type string',
@@ -29,7 +23,6 @@ export default async function handler(
         const unsplashURI = process.env.API_URL;
         const clientId = process.env.UNSPLASH_ACCESS_KEY;
 
-        // Fetch random photos from unsplash API
         const response = await fetch(
             `${unsplashURI}/photos?client_id=${clientId}&per_page=${limit}&page=${page}&orientation=squarish`,
         );

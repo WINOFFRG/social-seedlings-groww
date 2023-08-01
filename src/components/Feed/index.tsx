@@ -5,6 +5,7 @@ import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import { useLoadItems } from '@/hooks/useLoadMore';
 import { useStore } from '@/store';
 import { LoadingDots } from '../Loading';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export function HomeFeed() {
     const posts = useStore((state) => state.posts);
@@ -18,6 +19,8 @@ export function HomeFeed() {
         getMoreItems,
         posts,
     );
+
+    const isMobile = useMediaQuery('(min-width: 768px)');
 
     const [sentryRef] = useInfiniteScroll({
         loading,
