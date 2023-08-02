@@ -95,11 +95,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 120ms;
     transform: rotate(180deg);
-    will-change: background;
     cursor: pointer;
-    transition: all 120ms;
+    transition: background 120ms;
+    will-change: background;
 }
 
 .carouselButton:hover {
@@ -126,4 +125,19 @@
     font-size: 1rem;
     color: var(--content-title-color);
     margin: var(--sp-s);
+}
+
+@media (max-width: 768px) {
+    .sidebar__upperSection {
+        display: none;
+    }
+
+    .contentWrapper {
+        align-items: center;
+    }
+
+    .sidebar__lowerSection {
+        justify-content: center;
+        align-items: center;
+    }
 }
