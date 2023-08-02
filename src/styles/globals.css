@@ -34,10 +34,6 @@
 
     --insta-ring: #f09433;
     --bg-filter: invert(0);
-    --bp-sm: 576px;
-    --bp-md: 768px;
-    --bp-lg: 992px;
-    --bp-xl: 1200px;
 }
 
 .light-mode {
@@ -72,20 +68,14 @@ body {
     background-color: rgba(168, 85, 247, 0.9);
 }
 
-.fadeIn {
-    animation: fadeIn ease 1s;
-    -webkit-animation: fadeIn ease 1s;
-    -moz-animation: fadeIn ease 1s;
-    -o-animation: fadeIn ease 1s;
-    -ms-animation: fadeIn ease 1s;
-}
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
+        transform: translateY(10px);
     }
     100% {
         opacity: 1;
+        transform: translateY(0px);
     }
 }
 
@@ -140,7 +130,6 @@ body {
         transform: translateX(0.1em);
     }
 }
-/* Mode Theme */
 
 .toggle {
     --size: 2rem;
@@ -181,9 +170,6 @@ body {
 .background {
     --bg: hsl(240, 100%, 10%);
     background: var(--bg);
-    /* position: fixed; */
-    /* height: 100vh; */
-    /* width: 100vw; */
     transition: background 500ms;
 }
 
@@ -207,77 +193,46 @@ body {
     transition: color 500ms;
 }
 
-
 /* Make clicks pass-through */
 #nprogress {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 #nprogress .bar {
-  background: #095ae5;
+    background: #095ae5;
 
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
 
-  width: 100%;
-  height: 2px;
+    width: 100%;
+    height: 2px;
 }
 
 /* Fancy blur effect */
 #nprogress .peg {
-  display: block;
-  position: absolute;
-  right: 0px;
-  width: 100px;
-  height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  opacity: 1.0;
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow:
+        0 0 10px #29d,
+        0 0 5px #29d;
+    opacity: 1;
 
-  -webkit-transform: rotate(3deg) translate(0px, -4px);
-      -ms-transform: rotate(3deg) translate(0px, -4px);
-          transform: rotate(3deg) translate(0px, -4px);
-}
-
-/* Remove these to get rid of the spinner */
-#nprogress .spinner {
-  display: block;
-  position: fixed;
-  z-index: 1031;
-  top: 15px;
-  right: 15px;
-}
-
-#nprogress .spinner-icon {
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-
-  border: solid 2px transparent;
-  border-top-color: #29d;
-  border-left-color: #29d;
-  border-radius: 50%;
-
-  -webkit-animation: nprogress-spinner 400ms linear infinite;
-          animation: nprogress-spinner 400ms linear infinite;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
 }
 
 .nprogress-custom-parent {
-  overflow: hidden;
-  position: relative;
+    overflow: hidden;
+    position: relative;
 }
 
 .nprogress-custom-parent #nprogress .spinner,
 .nprogress-custom-parent #nprogress .bar {
-  position: absolute;
-}
-
-@-webkit-keyframes nprogress-spinner {
-  0%   { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes nprogress-spinner {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    position: absolute;
 }

@@ -9,7 +9,6 @@
 2. This site is without auth so why not keep everything on server this isn't personal data
 3. Add a logger for developer and do logging
 
-
 ## TODO
 
 1. Add titles on the buttons

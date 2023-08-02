@@ -30,7 +30,6 @@
 
 .welcomeTitle {
     font-size: 2rem;
-    /* font-weight: 600; */
 }
 
 .profileSection_userStats {
@@ -58,8 +57,7 @@
     gap: var(--sp-xl);
     width: 100%;
     justify-content: center;
-    opacity: 0;
-    animation: fadeIn 0.3s ease-in-out forwards;
+    animation: smoothScaleFade 0.3s ease-in-out forwards;
 }
 
 .profile__bottomSectionList {
@@ -68,19 +66,7 @@
     gap: var(--sp-xl);
     width: 100%;
     align-items: center;
-    opacity: 0;
-    animation: fadeIn 0.3s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+    animation: smoothScaleFade 0.3s ease-in-out forwards;
 }
 
 .divider {
@@ -133,4 +119,15 @@
     flex-direction: row;
     gap: var(--sp-s);
     justify-content: flex-end;
+}
+
+@keyframes smoothScaleFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

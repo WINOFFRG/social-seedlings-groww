@@ -15,6 +15,7 @@ import { Post, UserPhoto } from '@/types';
 import Link from 'next/link';
 import { useStore } from '@/store';
 import { useIsClient } from '@/hooks/useIsClient';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface PostProps {
     post: Post | UserPhoto;
@@ -32,6 +33,7 @@ interface MetaProps {
 export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
     ({ post, withMeta = true, size = 400, width, height, ...props }, ref) => {
         const [isPostLoaded, setIsPostLoaded] = useState(false);
+        const isMobile = useMediaQuery('(max-width: 768px)');
 
         return (
             <article className={styles.Illustration}>
@@ -40,7 +42,7 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
                     <Image
                         ref={ref}
                         loading="lazy"
-                        src={post.urls.regular}
+                        src={isMobile ? post.urls.small : post.urls.regular}
                         alt={post.alt_description ?? 'Post Image'}
                         width={width ?? size}
                         height={height ?? size}
@@ -98,8 +100,8 @@ export function PostHeader({ post }: MetaProps) {
                 <div>
                     <div className={styles.postHeader__userInfo}>
                         <span>{post.user.name}</span>
-                        <span>&nbsp; &bull;</span>
-                        <span>&nbsp; {timeAgo(post.created_at)} ago</span>
+                        &nbsp; &bull; &nbsp;
+                        <span>{timeAgo(post.created_at)} ago</span>
                     </div>
                     <span className={styles.postHeader__subtitle}>
                         {post.user.location}

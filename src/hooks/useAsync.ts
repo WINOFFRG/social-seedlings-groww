@@ -17,17 +17,6 @@ const useFetch = <T>(path: string): FetcherResult<T> => {
             try {
                 const jsonData: T = await unsplashFetch(path);
                 setData(jsonData);
-
-                // const message = await response.text();
-
-                // try {
-                //     const errorData = JSON.parse(message);
-                //     return {
-                //         message: errorData.errors?.[0],
-                //     };
-                // } catch (error) {
-                //     return { message };
-                // }
             } catch (error) {
                 setIsError(true);
             } finally {

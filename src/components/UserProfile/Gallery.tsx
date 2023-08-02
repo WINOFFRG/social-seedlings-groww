@@ -74,9 +74,9 @@ export function UserGallery({
                         );
                     })}
                     {items.length === 0 && (
-                        <div className={styles.profile__noPhotos}>
-                            <p>{user.name} has not posted any photos yet!</p>
-                        </div>
+                        <p className={styles.profile__noPhotos}>
+                            {user.name} has not posted any photos yet!
+                        </p>
                     )}
                 </div>
                 <InfiniteScroll

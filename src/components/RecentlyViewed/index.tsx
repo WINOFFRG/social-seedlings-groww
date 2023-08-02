@@ -86,7 +86,7 @@ export function RecentlyViewed() {
     }, [router.asPath, setRecentUsers]);
 
     return (
-        <section className={styles.contentWrapper}>
+        <aside className={styles.contentWrapper}>
             <div className={styles.sidebar__upperSection}>
                 <h2 className={styles.title}>Recently Viewed</h2>
                 {isClient && (
@@ -104,7 +104,7 @@ export function RecentlyViewed() {
                 </Link>
             </div>
             <span className={styles.footerText}>Made with ❤️ by @winoffrg</span>
-        </section>
+        </aside>
     );
 }
 

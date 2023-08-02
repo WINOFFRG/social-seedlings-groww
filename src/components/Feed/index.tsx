@@ -39,7 +39,7 @@ export function HomeFeed() {
     const newWidth = isMobile ? 350 : 400;
 
     return (
-        <>
+        <div>
             <div className={styles.feedContainer}>
                 {items.map((post, index) => {
                     const newHeight = (newWidth * post.height) / post.width;
@@ -55,6 +55,6 @@ export function HomeFeed() {
                 })}
             </div>
             <InfiniteScroll ref={elementRef} loading={loading} error={error} />
-        </>
+        </div>
     );
 }
