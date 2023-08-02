@@ -49,6 +49,7 @@ export function ProfileIcon({
                             border: 0,
                         }),
                     }}
+                    unoptimized
                 />
             </div>
         </div>

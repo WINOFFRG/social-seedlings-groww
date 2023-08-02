@@ -66,6 +66,7 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
                         className={`${styles.postImage} ${
                             !withMeta ? styles.postImage__withMeta : ''
                         }`}
+                        unoptimized
                         {...props}
                     />
                     <Blurhash

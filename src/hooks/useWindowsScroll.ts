@@ -1,23 +1,5 @@
 import { useState, useEffect } from 'react';
 
-export function useWindowEvent<K extends string = keyof WindowEventMap>(
-    type: K,
-    listener: K extends keyof WindowEventMap
-        ? (this: Window, ev: WindowEventMap[K]) => void
-        : (this: Window, ev: CustomEvent) => void,
-    options?: boolean | AddEventListenerOptions,
-) {
-    useEffect(() => {
-        // @ts-ignore
-        window.addEventListener(type, listener, options);
-
-        return () => {
-            // @ts-ignore
-            window.removeEventListener(type, listener, options);
-        };
-    }, [type, listener]);
-}
-
 interface ScrollPosition {
     x: number;
     y: number;
@@ -48,11 +30,18 @@ function scrollTo({ x, y }: Partial<ScrollPosition>) {
 export function useWindowScroll() {
     const [position, setPosition] = useState<ScrollPosition>({ x: 0, y: 0 });
 
-    useWindowEvent('scroll', () => setPosition(getScrollPosition()));
-    useWindowEvent('resize', () => setPosition(getScrollPosition()));
+    const callback = () => setPosition(getScrollPosition());
+
+    window.addEventListener('scroll', callback);
+    window.addEventListener('resize', callback);
 
     useEffect(() => {
         setPosition(getScrollPosition());
+
+        return () => {
+            window.removeEventListener('scroll', callback);
+            window.removeEventListener('resize', callback);
+        };
     }, []);
 
     return [position, scrollTo] as const;
