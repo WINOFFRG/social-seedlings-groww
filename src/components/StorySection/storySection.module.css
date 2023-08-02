@@ -12,6 +12,16 @@
     padding-left: var(--sp-xl);
 }
 
+@media (max-width: 768px) {
+    .storySection__wrapper {
+        margin-left: var(--sp-m);
+        margin-right: var(--sp-m);
+        margin-bottom: calc(2 * var(--sp-m));
+
+        padding-left: var(--sp-s);
+    }
+}
+
 .storySection__wrapper::-webkit-scrollbar {
     display: none;
 }

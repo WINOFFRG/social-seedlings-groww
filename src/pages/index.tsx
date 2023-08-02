@@ -35,7 +35,7 @@ export default function Home({ posts }: HomeProps) {
 export const getServerSideProps: GetServerSideProps<HomeProps> = async ({
     res,
 }: GetServerSidePropsContext) => {
-    res.setHeader('Cache-Control', 'public, s-maxage=7200');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600');
     const posts = await unsplashFetch(`/photos`);
     return { props: { posts } };
 };

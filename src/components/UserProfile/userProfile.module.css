@@ -8,6 +8,15 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    .userProfileSection {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: var(--sp-xl);
+        padding: var(--sp-xl);
+    }
+}
+
 .profile__leftSection {
     padding: var(--sp-m);
 }
@@ -94,6 +103,15 @@
     font-size: small;
     font-weight: 600;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .profile__viewButton {
+        width: 100%;
+        padding: var(--sp-m);
+        margin-left: var(--sp-m);
+        margin-right: var(--sp-m);
+    }
 }
 
 .profile__viewButton_active {

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-export function SolarMenuDotsBoldDuotone() {
+export function DottedIcon() {
     return (
         <svg
             width="1.8rem"

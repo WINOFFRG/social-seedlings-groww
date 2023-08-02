@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<UserProfileProps> = async ({
     res,
     query,
 }: GetServerSidePropsContext) => {
-    res.setHeader('Cache-Control', 'public, s-maxage=7200');
+    res.setHeader('Cache-Control', 'public, s-maxage=3600');
 
     const [userPhotos, user] = await Promise.all([
         unsplashFetch(`/users/${query.username}/photos`),

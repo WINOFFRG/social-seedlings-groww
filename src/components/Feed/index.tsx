@@ -6,6 +6,7 @@ import { useStore } from '@/store';
 import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
 import { useCallback, useEffect } from 'react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export function HomeFeed() {
     const posts = useStore((state) => state.posts);
@@ -34,11 +35,13 @@ export function HomeFeed() {
         rootMargin: '0px 0px 400px 0px',
     });
 
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    const newWidth = isMobile ? 350 : 400;
+
     return (
         <>
             <div className={styles.feedContainer}>
                 {items.map((post, index) => {
-                    const newWidth = 400;
                     const newHeight = (newWidth * post.height) / post.width;
 
                     return (

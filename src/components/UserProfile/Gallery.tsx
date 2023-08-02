@@ -8,6 +8,7 @@ import { useLoadItems } from '@/hooks/useLoadMore';
 import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
 import { useCallback } from 'react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export function UserGallery({
     userPhotos,
@@ -41,6 +42,10 @@ export function UserGallery({
         rootMargin: '0px 0px 400px 0px',
     });
 
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    const listWidth = isMobile ? 350 : 500;
+    const gridWidth = isMobile ? 150 : 400;
+
     return (
         isClient && (
             <>
@@ -52,14 +57,22 @@ export function UserGallery({
                             : styles.profile__bottomSectionList
                     }
                 >
-                    {items.map((photo) => (
-                        <PhotoPost
-                            post={photo}
-                            withMeta={view === 'list'}
-                            size={view === 'grid' ? 300 : 500}
-                            key={photo.id}
-                        />
-                    ))}
+                    {items.map((photo) => {
+                        const newWidth =
+                            view === 'grid' ? gridWidth : listWidth;
+                        const newHeight =
+                            (newWidth * photo.height) / photo.width;
+
+                        return (
+                            <PhotoPost
+                                post={photo}
+                                withMeta={view === 'list'}
+                                height={newHeight}
+                                width={newWidth}
+                                key={photo.id}
+                            />
+                        );
+                    })}
                     {items.length === 0 && (
                         <div className={styles.profile__noPhotos}>
                             <p>{user.name} has not posted any photos yet!</p>

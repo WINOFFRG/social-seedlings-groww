@@ -5,7 +5,7 @@ import {
     HeartIcon,
     RibbonSave,
     ShareIcon,
-    SolarMenuDotsBoldDuotone,
+    DottedIcon,
 } from '../Icons';
 import { forwardRef, useState } from 'react';
 import { Blurhash } from 'react-blurhash';
@@ -108,11 +108,11 @@ export function PostHeader({ post }: MetaProps) {
             </Link>
             <div className={styles.postHeader__rightSection}>
                 <button
-                    className={styles.postFooter__iconButton}
+                    className={`${styles.postFooter__iconButton} ${styles.moreButton}`}
                     aria-label="More options"
                     aria-disabled="true"
                 >
-                    <SolarMenuDotsBoldDuotone />
+                    <DottedIcon />
                 </button>
             </div>
         </header>

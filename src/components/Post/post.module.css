@@ -125,3 +125,17 @@
     font-size: small;
     color: var(--content-title-color);
 }
+
+@media (max-width: 768px) {
+    .postHeader {
+        padding: var(--post-mobile-padding);
+    }
+
+    .postFooter__stacked {
+        padding: var(--post-mobile-padding);
+    }
+
+    .postHeader__leftSection {
+        gap: var(--sp-s);
+    }
+}
