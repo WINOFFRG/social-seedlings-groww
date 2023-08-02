@@ -41,11 +41,11 @@
 }
 
 .light-mode {
-    --theme-bg-color: rgb(255 255 255 / 31%);
+    --theme-bg-color: rgba(255, 255, 255, 0.31);
     --theme-color: #3c3a3a;
     --inactive-color: #333333;
     --button-inactive: #3c3a3a;
-    --search-bg: rgb(255 255 255 / 31%);
+    --search-bg: rgba(16, 16, 16, 0.31);
     --dropdown-bg: #f7f7f7;
     --overlay-bg: rgb(255 255 255 / 30%);
     --dropdown-hover: rgb(236 236 236);
@@ -53,7 +53,7 @@
     --popup-bg: rgb(255 255 255);
     --hover-menu-bg: rgba(255 255 255 / 35%);
     --scrollbar-bg: rgb(255 253 253 / 57%);
-    --content-title-color: --theme-color;
+    --content-title-color: #999ba5;
 
     --insta-ring: #f09433;
     --bg-filter: invert(1);
@@ -205,4 +205,79 @@ body {
     display: block;
     padding: 0.5rem 0 0;
     transition: color 500ms;
+}
+
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #095ae5;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

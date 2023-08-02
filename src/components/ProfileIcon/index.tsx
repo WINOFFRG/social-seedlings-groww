@@ -18,10 +18,10 @@ export function ProfileIcon({
     size = 60,
     withLink = true,
     showOnline = false,
-    showStory = true,
+    showStory = false,
 }: ProfileIconProps) {
     const isOnline = showOnline && user.accepted_tos;
-    const hasStory = showStory && !user.accepted_tos;
+    const hasStory = showStory;
 
     const InnerSet = () => (
         <div className={styles.image_outer_container}>

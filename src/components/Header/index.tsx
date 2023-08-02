@@ -1,14 +1,15 @@
 import styles from './header.module.css';
 import { BellIcon } from '../Icons';
-import { useState } from 'react';
 import Link from 'next/link';
+import { useStore } from '@/store';
 
 export function Header() {
-    const [, setIsLightMode] = useState(false);
+    const setTheme = useStore((state) => state.setTheme);
+    const theme = useStore((state) => state.theme);
 
     const handleThemeSwitch = () => {
         document.body.classList.toggle('light-mode');
-        setIsLightMode((prev) => !prev);
+        setTheme(theme === 'dark' ? 'light' : 'dark');
     };
 
     return (

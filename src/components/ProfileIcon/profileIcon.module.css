@@ -19,7 +19,7 @@
 
 .image_inner_container img {
     border-radius: 50%;
-    border: 3px solid var(--theme-bg-color);
+    border: 3px solid var(--dropdown-bg);
 }
 
 .image_outer_container .green_icon {
