@@ -131,17 +131,6 @@
     fill: var(--theme-color);
 }
 
-.notification--bell {
-    animation: bell 2.2s linear;
-    transform-origin: 50% 0%;
-    animation-iteration-count: 2;
-}
-
-.notification--bellClapper {
-    animation: bellClapper 2.2s 0.1s linear;
-    animation-iteration-count: 2;
-}
-
 .notificationNumber {
     position: absolute;
     top: -10%;
@@ -162,4 +151,17 @@
     display: flex;
     align-items: center;
     gap: calc(1.5 * var(--sp-xl));
+}
+
+@keyframes notification {
+    0%,
+    25%,
+    75%,
+    100% {
+        opacity: 1;
+    }
+    30%,
+    70% {
+        opacity: 0;
+    }
 }

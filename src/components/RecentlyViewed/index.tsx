@@ -19,7 +19,7 @@ function UserProfile({ user }: { user: User }) {
                 <ProfileIcon user={user} size={42} showOnline />
                 <div className={styles.userProfile_desc}>
                     <h3>{user.username}</h3>
-                    <p>Followed By</p>
+                    <p>{user.name}</p>
                 </div>
             </div>
             <div className={styles.contentWrapper__rightSection}>

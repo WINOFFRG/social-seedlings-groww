@@ -41,7 +41,7 @@ export function ProfileIcon({
                     src={user.profile_image.large}
                     height={size}
                     width={size}
-                    alt=""
+                    alt={user.username ?? user.name}
                     style={{
                         borderRadius: '50%',
                         ...(!hasStory && {

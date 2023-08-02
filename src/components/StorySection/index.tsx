@@ -4,11 +4,18 @@ import { useStore } from '@/store';
 
 export function StorySection() {
     const posts = useStore((state) => state.posts);
+    const uniqueUsers = new Set();
 
     return (
         <section className={styles.storySection}>
             <div className={styles.storySection__wrapper}>
                 {posts.map((post) => {
+                    if (uniqueUsers.has(post.user.username)) {
+                        return null;
+                    }
+
+                    uniqueUsers.add(post.user.username);
+
                     return (
                         <div
                             className={styles.storySection__story}

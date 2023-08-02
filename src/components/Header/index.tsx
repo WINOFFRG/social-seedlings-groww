@@ -1,10 +1,10 @@
 import styles from './header.module.css';
-import { BellIcon, MoonIcon, SunIcon } from '../Icons';
+import { BellIcon } from '../Icons';
 import { useState } from 'react';
 import Link from 'next/link';
 
 export function Header() {
-    const [isLightMode, setIsLightMode] = useState(false);
+    const [, setIsLightMode] = useState(false);
 
     const handleThemeSwitch = () => {
         document.body.classList.toggle('light-mode');

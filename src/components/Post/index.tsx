@@ -10,8 +10,9 @@ import {
 import { forwardRef, useState } from 'react';
 import { Blurhash } from 'react-blurhash';
 import { ProfileIcon } from '../ProfileIcon';
-import { formatNumberWithCommas, hexToRGBA, timeAgo } from '@/utils';
+import { cache, formatNumberWithCommas, hexToRGBA, timeAgo } from '@/utils';
 import { Post, UserPhoto } from '@/types';
+import Link from 'next/link';
 
 interface PostProps {
     post: Post | UserPhoto;
@@ -84,14 +85,25 @@ export function PostHeader({ post }: MetaProps) {
                 background: `linear-gradient(90deg, ${post.color}, transparent)`,
             }}
         >
-            <button className={styles.postHeader__leftSection}>
-                <ProfileIcon size={42} user={post.user} />
-                <div className={styles.postHeader__userInfo}>
-                    <span>{post.user.name}</span>
-                    <span>&nbsp; &bull;</span>
-                    <span>&nbsp; {timeAgo(post.created_at)} ago</span>
+            <Link
+                className={styles.postHeader__leftSection}
+                href={post.user.username ? `/user/${post.user.username}` : '/'}
+                onClick={() => {
+                    cache.set(post.user.username, post.user);
+                }}
+            >
+                <ProfileIcon size={42} user={post.user} withLink={false} />
+                <div>
+                    <div className={styles.postHeader__userInfo}>
+                        <span>{post.user.name}</span>
+                        <span>&nbsp; &bull;</span>
+                        <span>&nbsp; {timeAgo(post.created_at)} ago</span>
+                    </div>
+                    <span className={styles.postHeader__subtitle}>
+                        {post.user.location}
+                    </span>
                 </div>
-            </button>
+            </Link>
             <div className={styles.postHeader__rightSection}>
                 <button className={styles.postFooter__iconButton}>
                     <SolarMenuDotsBoldDuotone />

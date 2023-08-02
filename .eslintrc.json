@@ -27,27 +27,28 @@
 		"sourceType": "module"
 	},
 	"rules": {
-		"@typescript-eslint/ban-ts-comment": "off",
-		"import/prefer-default-export": "off",
-		"import/no-extraneous-dependencies": "off",
-		"no-use-before-define": "off",
-		"import/no-unresolved": "off",
-		"no-underscore-dangle": "off",
-		"react/jsx-props-no-spreading": "off",
-		"react/react-in-jsx-scope": "off",
-		"no-param-reassign": "off",
-		"react/jsx-filename-extension": "off",
-		"react/require-default-props": "off",
-		"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-		"react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-		"prettier/prettier": [
-			"error",
-			{
-				"endOfLine": "auto"
-			}
-		],
-		"import/extensions": "off"
-	},
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-use-before-define": "off",
+    "import/no-unresolved": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-param-reassign": "off",
+    "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "import/extensions": "off",
+    "@typescript-eslint/no-unused-vars": "off"
+  },
 	"settings": {
 		"import/resolver": {
 			"node": {

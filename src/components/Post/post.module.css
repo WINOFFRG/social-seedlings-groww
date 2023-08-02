@@ -87,6 +87,12 @@
     color: var(--text-color);
 }
 
+.postHeader__subtitle {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--content-title-color);
+}
+
 .postFooter__iconButton {
     cursor: pointer;
 }

@@ -89,6 +89,16 @@ body {
     }
 }
 
+.notification--bell {
+    animation: bell 2.2s linear;
+    transform-origin: 50% 0%;
+    animation-iteration-count: 2;
+}
+
+.notification--bellClapper {
+    animation: bellClapper 2.2s 0.1s linear;
+    animation-iteration-count: 2;
+}
 
 @keyframes bell {
     0%,
@@ -130,19 +140,6 @@ body {
         transform: translateX(0.1em);
     }
 }
-@keyframes notification {
-    0%,
-    25%,
-    75%,
-    100% {
-        opacity: 1;
-    }
-    30%,
-    70% {
-        opacity: 0;
-    }
-}
-
 /* Mode Theme */
 
 .toggle {

@@ -5,10 +5,11 @@ import { useLoadItems } from '@/hooks/useLoadMore';
 import { useStore } from '@/store';
 import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export function HomeFeed() {
     const posts = useStore((state) => state.posts);
+    const setPosts = useStore((state) => state.setPosts);
 
     const getMoreItems = useCallback((page: number) => {
         return async () => {
@@ -20,6 +21,10 @@ export function HomeFeed() {
         getMoreItems,
         posts,
     );
+
+    useEffect(() => {
+        setPosts(items);
+    }, [items, setPosts]);
 
     const [elementRef] = useInfiniteScroll({
         loading,

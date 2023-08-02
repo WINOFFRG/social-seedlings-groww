@@ -3,7 +3,7 @@ import Head from 'next/head';
 const BASE_URL = 'http://localhost:3000/';
 
 interface MetaTagsProps {
-    path: string;
+    path?: string;
     image?: string;
     imageAlt?: string;
     description?: string;
@@ -17,7 +17,7 @@ export function HtmlHead({
     description,
     title,
 }: MetaTagsProps) {
-    title = title ?? 'Social Seedlings';
+    title = title ? `Social Seedlings | ${title}` : 'Social Seedlings';
     description =
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam nisi laudantium eaque quos blanditiis distinctio magnam nemo, in unde, similique incidunt vel, est officiis commodi! Maxime quae cupiditate tempore facere.';
     image = image ?? '/favicon/apple-touch-icon.png';
