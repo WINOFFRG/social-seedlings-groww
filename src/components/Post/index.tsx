@@ -107,7 +107,11 @@ export function PostHeader({ post }: MetaProps) {
                 </div>
             </Link>
             <div className={styles.postHeader__rightSection}>
-                <button className={styles.postFooter__iconButton}>
+                <button
+                    className={styles.postFooter__iconButton}
+                    aria-label="More options"
+                    aria-disabled="true"
+                >
                     <SolarMenuDotsBoldDuotone />
                 </button>
             </div>
@@ -142,16 +146,23 @@ export function PostFooter({ post }: MetaProps) {
                                 addLikedPost(post.id);
                             }
                         }}
+                        aria-label="Like post"
                     >
                         {isClient && <HeartIcon liked={isLiked} />}
                     </button>
                     <button
                         className={`${styles.postFooter__iconButton} ${styles.commentButton}`}
+                        aria-label="Comment on post"
+                        aria-disabled="true"
+                        disabled
                     >
                         <CommentsIcon />
                     </button>
                     <button
                         className={`${styles.postFooter__iconButton} ${styles.shareButton}`}
+                        aria-label="Share post"
+                        aria-disabled="true"
+                        disabled
                     >
                         <ShareIcon />
                     </button>
@@ -159,6 +170,9 @@ export function PostFooter({ post }: MetaProps) {
                 <div className={styles.postFooter__rightSection}>
                     <button
                         className={`${styles.postFooter__iconButton} ${styles.saveButton}`}
+                        aria-label="Save post"
+                        aria-disabled="true"
+                        disabled
                     >
                         <RibbonSave />
                     </button>

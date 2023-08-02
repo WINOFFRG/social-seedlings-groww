@@ -18,7 +18,7 @@ export default function Home({ posts }: HomeProps) {
 
     return (
         <>
-            <HtmlHead />
+            <HtmlHead title="Home Feed" />
             <StorySection />
             <div className={styles.sectionWrapper__container}>
                 <div className={styles.leftSection}>

@@ -42,6 +42,7 @@ function UserProfile({ user }: { user: User }) {
                     style={{
                         color: isFollowed ? '#a6a6a6' : '#0095f6',
                     }}
+                    aria-label={isFollowed ? 'Requested' : 'Follow'}
                 >
                     {isFollowed ? 'Requested' : 'Follow'}
                 </button>
@@ -98,7 +99,7 @@ export function RecentlyViewed() {
             </div>
             <div className={styles.sidebar__lowerSection}>
                 <Affix />
-                <Link href="https://github.com/winoffrg">
+                <Link href="https://github.com/winoffrg" aria-label="Github">
                     <GithubIcon />
                 </Link>
             </div>
@@ -115,6 +116,7 @@ function Affix() {
         <button
             className={styles.carouselButton}
             onClick={() => scrollTo({ x: 0, y: 0 })}
+            aria-label="Scroll to top"
         >
             <ChevronDownIcon />
         </button>

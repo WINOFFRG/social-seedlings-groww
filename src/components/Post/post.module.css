@@ -109,7 +109,11 @@
     fill: #27d9d5;
 }
 
-.commentsButton:hover path{
+.commentButton, .shareButton, .saveButton {
+    cursor: not-allowed;
+}
+
+.commentButton:hover path{
     stroke: #24a0ed;
 }
 
