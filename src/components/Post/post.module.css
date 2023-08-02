@@ -117,7 +117,7 @@
 }
 
 .postFooter__iconButton {
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 @media (hover: hover) and (pointer: fine) {

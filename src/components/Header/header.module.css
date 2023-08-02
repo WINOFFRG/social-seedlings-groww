@@ -79,10 +79,7 @@
     padding-left: 16px;
     border-radius: 4px;
     transition: max-width 0.2s ease 0s;
-}
-
-.searchBar:focus-within {
-    max-width: 600px;
+    cursor: not-allowed;
 }
 
 .searchBar input {
@@ -116,14 +113,9 @@
 
 .notification {
     position: relative;
-    width: 2em;
-    height: 2em;
+    /* width: 1.8rem;
+    height: 1.8rem; */
     cursor: not-allowed;
-}
-
-.notification svg {
-    width: 4rem;
-    height: 4rem;
 }
 
 .notification svg > path {
@@ -133,7 +125,7 @@
 .notificationNumber {
     position: absolute;
     top: -10%;
-    left: 100%;
+    left: 50%;
     font-size: 0.8rem;
     border-radius: var(--radius-half);
     width: 1.2rem;

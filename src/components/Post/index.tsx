@@ -130,6 +130,7 @@ export function PostHeader({ post }: MetaProps) {
                     className={`${styles.postFooter__iconButton} ${styles.moreButton}`}
                     aria-label="More options"
                     aria-disabled="true"
+                    disabled
                 >
                     <DottedIcon />
                 </button>

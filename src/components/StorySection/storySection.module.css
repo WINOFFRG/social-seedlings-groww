@@ -3,7 +3,8 @@
     align-items: center;
     overflow-x: auto;
     user-select: none;
-    margin-bottom: calc(2 * var(--sp-xl));
+    padding-top: var(--sp-s);
+    margin-bottom: calc(2 * var(--sp-l));
     gap: var(--sp-l);
     padding-left: var(--sp-xl);
 }

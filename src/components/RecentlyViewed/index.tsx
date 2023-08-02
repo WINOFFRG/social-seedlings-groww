@@ -89,6 +89,11 @@ export function RecentlyViewed() {
         <section className={styles.contentWrapper}>
             <div className={styles.sidebar__upperSection}>
                 <h2 className={styles.title}>Recently Viewed</h2>
+                {cachedUsers.length === 0 && (
+                    <div className={styles.subtitle}>
+                        Click on a user photo to see their profile!
+                    </div>
+                )}
                 {isClient && (
                     <div className={styles.contentWrapper__container}>
                         {cachedUsers.map((user: User) => (
@@ -98,27 +103,56 @@ export function RecentlyViewed() {
                 )}
             </div>
             <div className={styles.sidebar__lowerSection}>
-                <Affix />
-                <Link href="https://github.com/winoffrg" aria-label="Github">
+                <Link
+                    href="https://github.com/winoffrg"
+                    aria-label="Github"
+                    title="Github"
+                    target="_blank"
+                >
                     <GithubIcon />
                 </Link>
+                <Affix />
             </div>
-            <span className={styles.footerText}>Made with ❤️ by @winoffrg</span>
+            <span className={styles.footerText}>
+                Made with ❤️ by &nbsp;
+                <Link
+                    title="winoffrg on LinkedIn"
+                    style={{
+                        textDecoration: 'underline',
+                    }}
+                    href={'https://linkedin.com/in/winoffrg'}
+                    target="_blank"
+                >
+                    @winoffrg
+                </Link>
+            </span>
         </section>
     );
 }
 
 // Keep this as low as possible because hook causes re-render on every scroll
 function Affix() {
-    const [, scrollTo] = useWindowScroll();
+    const [{ y }, scrollTo] = useWindowScroll();
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        if (y > window.innerHeight * 1) {
+            setIsVisible(true);
+        } else {
+            setIsVisible(false);
+        }
+    }, [y]);
 
     return (
-        <button
-            className={styles.carouselButton}
-            onClick={() => scrollTo({ x: 0, y: 0 })}
-            aria-label="Scroll to top"
-        >
-            <ChevronDownIcon />
-        </button>
+        isVisible && (
+            <button
+                className={styles.carouselButton}
+                onClick={() => scrollTo({ x: 0, y: 0 })}
+                aria-label="Scroll to top"
+                title="Scroll to top"
+            >
+                <ChevronDownIcon />
+            </button>
+        )
     );
 }

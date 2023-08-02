@@ -6,6 +6,20 @@
     color: var(--content-title-color);
 }
 
+.subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: var(--sp-l);
+    margin-bottom: var(--sp-s);
+    margin-left: var(--sp-s);
+    color: var(--theme-color);
+}
+
+.subtitle:hover {
+    color: var(--theme-color-hover);
+    background: var(--dropdown-hover);
+}
+
 .contentWrapper {
     min-width: 300px;
     position: sticky;
@@ -85,6 +99,7 @@
     transform: rotate(180deg);
     will-change: background;
     cursor: pointer;
+    transition: all 120ms;
 }
 
 .carouselButton:hover {

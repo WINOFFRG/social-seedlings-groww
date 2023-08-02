@@ -65,8 +65,15 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+@media (pointer: fine) {
+    :focus {
+        outline: 2px solid #833AB4; /* You can customize the color and size of the outline */
+        outline-offset: 4px; /* Customize the offset (space between element and outline) */
+    }
+}
+
 ::selection {
-    background-color: rgba(168, 85, 247, 0.9);
+    background-color: rgba(168, 85, 247, 0.6);
 }
 
 @keyframes fadeIn {

@@ -19,7 +19,12 @@ export function Header() {
                     Social Seedlings
                 </Link>
                 <div className={styles.searchBar}>
-                    <input type="text" placeholder="Search"></input>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        disabled
+                        title="Search is currently disabled."
+                    ></input>
                 </div>
                 <div className={styles.header__rightSection}>
                     <div className={styles.notification}>
@@ -31,6 +36,7 @@ export function Header() {
                         id="toggle"
                         className="toggle"
                         type="checkbox"
+                        tabIndex={0}
                         onClick={handleThemeSwitch}
                     />
                 </div>

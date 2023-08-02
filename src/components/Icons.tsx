@@ -135,7 +135,7 @@ export function GithubIcon() {
 
 export function BellIcon() {
     return (
-        <SVG viewBox="-10 0 35 35">
+        <SVG viewBox="0 0 16 16">
             <path
                 className="notification--bell"
                 d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"

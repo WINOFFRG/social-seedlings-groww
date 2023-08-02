@@ -2,6 +2,7 @@ import { UserProfileProps } from '@/types';
 import { ProfileIcon } from '../ProfileIcon';
 import styles from './userProfile.module.css';
 import { UserGallery } from './Gallery';
+import { formatNumberWithCommas } from '@/utils';
 
 export function UserProfile({ user, userPhotos }: UserProfileProps) {
     return (
@@ -16,15 +17,22 @@ export function UserProfile({ user, userPhotos }: UserProfileProps) {
                     </span>
                     <div className={styles.profileSection_userStats}>
                         <span>
-                            Posts <b>{user.total_photos}</b>
+                            Posts{' '}
+                            <b>{formatNumberWithCommas(user.total_photos)}</b>
                         </span>
                         |
                         <span>
-                            Followers <b>{user.followers_count}</b>
+                            Followers{' '}
+                            <b>
+                                {formatNumberWithCommas(user.followers_count)}
+                            </b>
                         </span>
                         |
                         <span>
-                            Following <b>{user.following_count}</b>
+                            Following{' '}
+                            <b>
+                                {formatNumberWithCommas(user.following_count)}
+                            </b>
                         </span>
                     </div>
                     <div className={styles.profileSection_userBio}>
