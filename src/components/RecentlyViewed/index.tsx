@@ -42,9 +42,9 @@ function UserProfile({ user }: { user: User }) {
                     style={{
                         color: isFollowed ? '#a6a6a6' : '#0095f6',
                     }}
-                    aria-label={isFollowed ? 'Requested' : 'Follow'}
+                    aria-label={isFollowed ? 'Following' : 'Follow'}
                 >
-                    {isFollowed ? 'Requested' : 'Follow'}
+                    {isFollowed ? 'Following' : 'Follow'}
                 </button>
             </div>
         </div>
@@ -71,7 +71,8 @@ export function RecentlyViewed() {
         const uniqueUsers = new Set();
 
         // @ts-ignore
-        cache.forEach((value: User) => {
+        cache.forEach((value: User, key) => {
+            console.log(value, key);
             if (uniqueUsers.has(value.id)) return;
             currentUsers.push(value);
             uniqueUsers.add(value.id);

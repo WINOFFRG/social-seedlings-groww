@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { useStore } from '@/store';
 
 export function Header() {
-    const setTheme = useStore((state) => state.setTheme);
-    const theme = useStore((state) => state.theme);
+    const toggleTheme = useStore((state) => state.toggleTheme);
 
     const handleThemeSwitch = () => {
         document.body.classList.toggle('light-mode');
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        toggleTheme();
     };
 
     return (

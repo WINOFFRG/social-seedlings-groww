@@ -7,7 +7,7 @@ import {
     ShareIcon,
     DottedIcon,
 } from '../Icons';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 import { Blurhash } from 'react-blurhash';
 import { ProfileIcon } from '../ProfileIcon';
 import { cache, formatNumberWithCommas, hexToRGBA, timeAgo } from '@/utils';
@@ -16,6 +16,7 @@ import Link from 'next/link';
 import { useStore } from '@/store';
 import { useIsClient } from '@/hooks/useIsClient';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useTrackVisibility } from 'react-intersection-observer-hook';
 
 interface PostProps {
     post: Post | UserPhoto;
@@ -31,12 +32,20 @@ interface MetaProps {
 
 // eslint-disable-next-line react/display-name
 export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
-    ({ post, withMeta = true, size = 400, width, height, ...props }, ref) => {
+    ({ post, withMeta = true, size = 400, width, height, ...props }) => {
         const [isPostLoaded, setIsPostLoaded] = useState(false);
         const isMobile = useMediaQuery('(max-width: 768px)');
+        const [ref, { wasEverVisible }] = useTrackVisibility({
+            threshold: 0.3,
+        });
 
         return (
-            <article className={styles.Illustration}>
+            <article
+                className={`${styles.Illustration} ${
+                    wasEverVisible ? styles.Illustration__animated : ''
+                }`}
+                ref={ref}
+            >
                 {withMeta && <PostHeader post={post} />}
                 <div className={styles.postImage__wrapper}>
                     <Image
@@ -82,11 +91,16 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
 );
 
 export function PostHeader({ post }: MetaProps) {
+    const theme = useStore((state) => state.theme);
+
     return (
         <header
             className={styles.postHeader}
             style={{
-                background: `linear-gradient(90deg, ${post.color}, transparent)`,
+                background:
+                    theme === 'dark'
+                        ? `linear-gradient(90deg, ${post.color}, transparent)`
+                        : hexToRGBA(post.color, 0.2),
             }}
         >
             <Link
@@ -186,7 +200,7 @@ export function PostFooter({ post }: MetaProps) {
                         {formatNumberWithCommas(
                             isLiked ? post.likes + 1 : post.likes,
                         )}{' '}
-                        likes
+                        {post.likes < 2 ? 'like' : 'likes'}
                     </span>
                 )}
             </div>

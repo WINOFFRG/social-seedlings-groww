@@ -21,7 +21,6 @@ export function ProfileIcon({
     showOnline = false,
     showStory = false,
 }: ProfileIconProps) {
-    const isMobile = useMediaQuery('(max-width: 640px)');
     const isOnline = showOnline && user.accepted_tos;
     const hasStory = showStory;
 
@@ -40,11 +39,7 @@ export function ProfileIcon({
                 }}
             >
                 <Image
-                    src={
-                        isMobile
-                            ? user.profile_image.medium
-                            : user.profile_image.large
-                    }
+                    src={user.profile_image.large}
                     height={size}
                     width={size}
                     alt={user.username ?? user.name}

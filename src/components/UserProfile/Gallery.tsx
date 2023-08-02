@@ -20,14 +20,17 @@ export function UserGallery({
     const view = useStore((state) => state.view);
     const isClient = useIsClient();
 
-    const getMoreItems = useCallback((page: number) => {
-        return async () => {
-            return unsplashFetch(
-                `/users/${user.username}/photos`,
-                `page=${page}`,
-            );
-        };
-    }, []);
+    const getMoreItems = useCallback(
+        (page: number) => {
+            return async () => {
+                return unsplashFetch(
+                    `/users/${user.username}/photos`,
+                    `page=${page}`,
+                );
+            };
+        },
+        [user.username],
+    );
 
     const { loading, items, hasNextPage, error, loadMore } = useLoadItems(
         getMoreItems,

@@ -15,9 +15,17 @@ export function UserProfile({ user, userPhotos }: UserProfileProps) {
                         @ {user.username}
                     </span>
                     <div className={styles.profileSection_userStats}>
-                        <span>Posts {user.total_photos}</span>|
-                        <span>Followers {user.followers_count}</span>|
-                        <span>Following {user.following_count}</span>
+                        <span>
+                            Posts <b>{user.total_photos}</b>
+                        </span>
+                        |
+                        <span>
+                            Followers <b>{user.followers_count}</b>
+                        </span>
+                        |
+                        <span>
+                            Following <b>{user.following_count}</b>
+                        </span>
                     </div>
                     <div className={styles.profileSection_userBio}>
                         <span className={styles.userBio__name}>

@@ -1,6 +1,6 @@
 export async function unsplashFetch(path: string, params?: string) {
     const response = await fetch(
-        `${process.env.API_URL}${path}?client_id=${process.env.UNSPLASH_ACCESS_KEY}&orientation=squarish&per_page=10&${params}`,
+        `${process.env.API_URL}${path}?client_id=${process.env.UNSPLASH_ACCESS_KEY}&orientation=squarish&order_by=popular&per_page=10&${params}`,
         {
             headers: {
                 'Content-Type': 'application/json',

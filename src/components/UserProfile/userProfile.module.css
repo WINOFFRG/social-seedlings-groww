@@ -36,11 +36,19 @@
     display: flex;
     flex-direction: row;
     gap: var(--sp-l);
-}
-
-.profileSection_userStats  {
     font-weight: 400;
     color: var(--content-title-color);
+}
+
+.profileSection_userStats b {
+    font-weight: 500    ;
+    color: var(--theme-color);
+}
+
+@media (max-width: 768px) {
+    .profileSection_userStats {
+        gap: var(--sp-m);
+    }
 }
 
 .profileSection_userBio {

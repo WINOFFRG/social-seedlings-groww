@@ -7,6 +7,27 @@
     --post-desktop-padding: var(--sp-m);
     --post-mobile-padding: calc(var(--sp-m) / 2);
     overflow: hidden;
+
+    /* initial animation */
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.Illustration__animated {
+    animation: fadeIn 0.3s ease-in-out forwards;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .postHeader {
@@ -82,15 +103,15 @@
 }
 
 .postHeader__userInfo {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--text-color);
 }
 
 .postHeader__subtitle {
     font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--content-title-color);
+    font-weight: 500;
+    color: var(--inactive-color);
 }
 
 .postFooter__iconButton {

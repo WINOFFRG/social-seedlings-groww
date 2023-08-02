@@ -18,7 +18,7 @@ interface BearState {
     removeRequestedUser: (userId: string) => void;
     setRequestedUsers: (users: string[]) => void;
     theme: 'light' | 'dark';
-    setTheme: (theme: 'light' | 'dark') => void;
+    toggleTheme: () => void;
 }
 
 // First I will check if TS working properly then using chaining
@@ -63,7 +63,10 @@ export const useStore = create<BearState>()(
                     ),
                 })),
             theme: 'dark',
-            setTheme: (theme) => set({ theme }),
+            toggleTheme: () =>
+                set((state) => ({
+                    theme: state.theme === 'dark' ? 'light' : 'dark',
+                })),
         }),
         {
             name: 'cache-storage',
