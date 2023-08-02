@@ -22,7 +22,9 @@ export default function Home({ posts }: HomeProps) {
             <StorySection />
             <div className={styles.sectionWrapper__container}>
                 <HomeFeed />
-                <RecentlyViewed />
+                <aside className={styles.rightSection}>
+                    <RecentlyViewed />
+                </aside>
             </div>
         </>
     );

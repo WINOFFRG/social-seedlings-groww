@@ -72,7 +72,6 @@ export function RecentlyViewed() {
 
         // @ts-ignore
         cache.forEach((value: User, key) => {
-            console.log(value, key);
             if (uniqueUsers.has(value.id)) return;
             currentUsers.push(value);
             uniqueUsers.add(value.id);
@@ -87,7 +86,7 @@ export function RecentlyViewed() {
     }, [router.asPath, setRecentUsers]);
 
     return (
-        <aside className={styles.contentWrapper}>
+        <section className={styles.contentWrapper}>
             <div className={styles.sidebar__upperSection}>
                 <h2 className={styles.title}>Recently Viewed</h2>
                 {isClient && (
@@ -105,7 +104,7 @@ export function RecentlyViewed() {
                 </Link>
             </div>
             <span className={styles.footerText}>Made with ❤️ by @winoffrg</span>
-        </aside>
+        </section>
     );
 }
 

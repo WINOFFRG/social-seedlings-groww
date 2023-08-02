@@ -33,6 +33,7 @@
     padding: var(--sp-s);
     border-radius: 5px;
     transition: background 120ms;
+    will-change: background;
 }
 
 .contentWrapper__container__item:hover {
@@ -44,6 +45,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--sp-s);
+    user-select: none;
 }
 
 .userProfile_desc h3 {
@@ -64,6 +66,7 @@
     font-size: 0.8rem;
     cursor: pointer;
     transition: color 120ms;
+    will-change: color;
 }
 
 .followBtn:hover {
@@ -80,6 +83,7 @@
     justify-content: center;
     transition: background 120ms;
     transform: rotate(180deg);
+    will-change: background;
     cursor: pointer;
 }
 

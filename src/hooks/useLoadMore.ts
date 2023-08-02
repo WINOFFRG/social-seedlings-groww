@@ -13,7 +13,7 @@ export function useLoadItems(
         initialData.length === ARRAY_SIZE,
     );
     const [error, setError] = React.useState<Error>();
-    const [page, setPage] = React.useState<number>(0);
+    const [page, setPage] = React.useState<number>(1);
 
     async function loadMore() {
         setLoading(true);

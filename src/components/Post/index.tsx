@@ -32,10 +32,10 @@ interface MetaProps {
 
 // eslint-disable-next-line react/display-name
 export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
-    ({ post, withMeta = true, size = 400, width, height, ...props }) => {
+    ({ post, withMeta = true, size = 400, width, height, ...props }, ref) => {
         const [isPostLoaded, setIsPostLoaded] = useState(false);
         const isMobile = useMediaQuery('(max-width: 768px)');
-        const [ref, { wasEverVisible }] = useTrackVisibility({
+        const [rootRef, { wasEverVisible }] = useTrackVisibility({
             threshold: 0.3,
         });
 
@@ -44,7 +44,7 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
                 className={`${styles.Illustration} ${
                     wasEverVisible ? styles.Illustration__animated : ''
                 }`}
-                ref={ref}
+                ref={rootRef}
             >
                 {withMeta && <PostHeader post={post} />}
                 <div className={styles.postImage__wrapper}>
