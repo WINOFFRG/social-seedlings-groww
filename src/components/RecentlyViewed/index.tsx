@@ -11,7 +11,12 @@ import { useRouter } from 'next/router';
 import { useIsClient } from '@/hooks/useIsClient';
 
 function UserProfile({ user }: { user: User }) {
-    const [isFollowed, setIsFollowed] = useState(false);
+    const requestedUsers = useStore((state) => state.requestedUsers);
+    const addRequestedUser = useStore((state) => state.addRequestedUser);
+    const removeRequestedUser = useStore((state) => state.removeRequestedUser);
+    const [isFollowed, setIsFollowed] = useState(
+        requestedUsers.includes(user.id),
+    );
 
     return (
         <div className={styles.contentWrapper__container__item}>
@@ -25,7 +30,15 @@ function UserProfile({ user }: { user: User }) {
             <div className={styles.contentWrapper__rightSection}>
                 <button
                     className={styles.followBtn}
-                    onClick={() => setIsFollowed(!isFollowed)}
+                    onClick={() => {
+                        setIsFollowed(!isFollowed);
+
+                        if (isFollowed) {
+                            removeRequestedUser(user.id);
+                        } else {
+                            addRequestedUser(user.id);
+                        }
+                    }}
                     style={{
                         color: isFollowed ? '#a6a6a6' : '#0095f6',
                     }}

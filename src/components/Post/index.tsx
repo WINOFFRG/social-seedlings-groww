@@ -13,6 +13,8 @@ import { ProfileIcon } from '../ProfileIcon';
 import { cache, formatNumberWithCommas, hexToRGBA, timeAgo } from '@/utils';
 import { Post, UserPhoto } from '@/types';
 import Link from 'next/link';
+import { useStore } from '@/store';
+import { useIsClient } from '@/hooks/useIsClient';
 
 interface PostProps {
     post: Post | UserPhoto;
@@ -114,7 +116,11 @@ export function PostHeader({ post }: MetaProps) {
 }
 
 export function PostFooter({ post }: MetaProps) {
-    const [isLiked, setIsLiked] = useState(false);
+    const isClient = useIsClient();
+    const likedPosts = useStore((state) => state.likedPosts);
+    const addLikedPost = useStore((state) => state.addLikedPost);
+    const removeLikedPost = useStore((state) => state.removeLikedPost);
+    const [isLiked, setIsLiked] = useState(likedPosts.includes(post.id));
 
     return (
         <footer
@@ -129,9 +135,15 @@ export function PostFooter({ post }: MetaProps) {
                         className={`${styles.postFooter__iconButton} ${styles.likeButton}`}
                         onClick={() => {
                             setIsLiked(!isLiked);
+
+                            if (isLiked) {
+                                removeLikedPost(post.id);
+                            } else {
+                                addLikedPost(post.id);
+                            }
                         }}
                     >
-                        <HeartIcon liked={isLiked} />
+                        {isClient && <HeartIcon liked={isLiked} />}
                     </button>
                     <button
                         className={`${styles.postFooter__iconButton} ${styles.commentButton}`}
@@ -146,19 +158,21 @@ export function PostFooter({ post }: MetaProps) {
                 </div>
                 <div className={styles.postFooter__rightSection}>
                     <button
-                        className={
-                            styles.postFooter__iconButton +
-                            ' ' +
-                            styles.saveButton
-                        }
+                        className={`${styles.postFooter__iconButton} ${styles.saveButton}`}
                     >
                         <RibbonSave />
                     </button>
                 </div>
             </div>
             <div className={styles.postLikes}>
-                {formatNumberWithCommas(isLiked ? post.likes + 1 : post.likes)}{' '}
-                likes
+                {isClient && (
+                    <span>
+                        {formatNumberWithCommas(
+                            isLiked ? post.likes + 1 : post.likes,
+                        )}{' '}
+                        likes
+                    </span>
+                )}
             </div>
             <div className={styles.postCaption}>
                 {post.description ?? post.alt_description}
