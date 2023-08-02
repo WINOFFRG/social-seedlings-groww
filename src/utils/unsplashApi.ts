@@ -10,7 +10,15 @@ export async function unsplashFetch(path: string, params?: string) {
 
     if (!response.ok) {
         const message = await response.text();
-        throw new Error(message);
+
+        try {
+            const errorData = JSON.parse(message);
+            return {
+                message: errorData.errors?.[0],
+            };
+        } catch (error) {
+            return { message };
+        }
     }
 
     const data = await response.json();

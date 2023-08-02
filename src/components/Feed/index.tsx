@@ -5,9 +5,8 @@ import { useLoadItems } from '@/hooks/useLoadMore';
 import { useStore } from '@/store';
 import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { useIsClient } from '@/hooks/useIsClient';
 
 export function HomeFeed() {
     const posts = useStore((state) => state.posts);
@@ -36,28 +35,39 @@ export function HomeFeed() {
         rootMargin: '0px 0px 400px 0px',
     });
 
-    const isClient = useIsClient();
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const newWidth = isMobile ? 340 : 400;
+    const [newWidth, setNewWidth] = useState(400);
+
+    useEffect(() => {
+        if (isMobile) {
+            setNewWidth(350);
+        }
+    }, [isMobile]);
 
     return (
         <div>
             <div className={styles.feedContainer}>
-                {isClient &&
-                    items.map((post, index) => {
-                        const newHeight = (newWidth * post.height) / post.width;
+                {items.map((post, index) => {
+                    // const newWidth = isMobile ? 300 : 400;
+                    const newHeight = (newWidth * post.height) / post.width;
 
-                        return (
-                            <PhotoPost
-                                key={`${post.id}:${index}`}
-                                post={post}
-                                height={newHeight}
-                                width={newWidth}
-                            />
-                        );
-                    })}
+                    return (
+                        <PhotoPost
+                            key={`${post.id}:${index}`}
+                            post={post}
+                            height={newHeight}
+                            width={newWidth}
+                        />
+                    );
+                })}
             </div>
-            <InfiniteScroll ref={elementRef} loading={loading} error={error} />
+            {
+                <InfiniteScroll
+                    ref={elementRef}
+                    loading={loading}
+                    error={error}
+                />
+            }
         </div>
     );
 }

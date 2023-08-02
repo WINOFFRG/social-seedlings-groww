@@ -50,7 +50,7 @@
 
 .postHeader__leftSection:hover {
     background: var(--content-bg);
-} 
+}
 
 .postFooter__stacked {
     display: flex;
@@ -120,24 +120,28 @@
     cursor: pointer;
 }
 
-.likeButton:hover path {
-    fill: #ed4956;
+@media (hover: hover) and (pointer: fine) {
+    .likeButton:hover path {
+        fill: #ed4956;
+    }
+
+    .saveButton:hover path {
+        stroke: #73d3d0;
+    }
+
+    .shareButton:hover path {
+        fill: #27d9d5;
+    }
+
+    .commentButton:hover path {
+        stroke: #24a0ed;
+    }
 }
 
-.saveButton:hover path{
-    stroke: #73d3d0;
-}
-
-.shareButton:hover path{
-    fill: #27d9d5;
-}
-
-.commentButton, .shareButton, .saveButton {
+.commentButton,
+.shareButton,
+.saveButton {
     cursor: not-allowed;
-}
-
-.commentButton:hover path{
-    stroke: #24a0ed;
 }
 
 .dotIcon {

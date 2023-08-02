@@ -92,15 +92,18 @@ export const PhotoPost = forwardRef<HTMLImageElement, PostProps>(
 
 export function PostHeader({ post }: MetaProps) {
     const theme = useStore((state) => state.theme);
+    const isClient = useIsClient();
 
     return (
         <header
             className={styles.postHeader}
             style={{
-                background:
-                    theme === 'dark'
-                        ? `linear-gradient(90deg, ${post.color}, transparent)`
-                        : hexToRGBA(post.color, 0.2),
+                ...(isClient && {
+                    background:
+                        theme === 'dark'
+                            ? `linear-gradient(90deg, ${post.color}, transparent)`
+                            : hexToRGBA(post.color, 0.2),
+                }),
             }}
         >
             <Link

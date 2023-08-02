@@ -28,7 +28,7 @@
     align-items: center;
     padding: var(--sp-s);
     gap: var(--sp-m);
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
     /* background: var(--content-bg); */
     padding: var(--sp-s);
     border-radius: 5px;

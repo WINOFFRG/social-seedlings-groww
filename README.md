@@ -23,3 +23,7 @@ Section using Unsplash OpenApi. 💫
 4. Support for Typescript, Prettier, Eslint
 5. Clean Architecture, Separated Hooks, Components, Utils
 6. Vercel Edge Caching for API Responses for SSR'ed pages
+
+### Performance Analysis
+
+![Performance Analysis](./public/lighthouse.jpg)

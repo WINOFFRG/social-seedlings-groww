@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-image: url(/bg_gradient_pfosr9.jpeg);
     filter: var(--bg-filter);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     will-change: filter;
 }
 

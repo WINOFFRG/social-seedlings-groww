@@ -14,16 +14,22 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
         return (
             <div className={styles.feedContainer__loadMore} ref={ref}>
                 {loading && <LoadingDots />}
-                {error && (
-                    <div className={styles.errorMessage}>
-                        <p>
-                            ⚠️ An unexpected error occurred. Please try again!
-                        </p>
-                        <p>Details: {error.message}</p>
-                    </div>
-                )}
+                <Error error={error} />
                 {children}
             </div>
         );
     },
 );
+
+export const Error = ({ error }: { error: Error | string | undefined }) => {
+    if (!error) {
+        return null;
+    }
+
+    return (
+        <div className={styles.errorMessage}>
+            <p>⚠️ An unexpected error occurred. Please try again!</p>
+            <p>Details: {typeof error === 'string' ? error : error.message}</p>
+        </div>
+    );
+};
