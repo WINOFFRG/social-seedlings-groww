@@ -3,8 +3,11 @@ import { ProfileIcon } from '../ProfileIcon';
 import styles from './userProfile.module.css';
 import { UserGallery } from './Gallery';
 import { formatNumberWithCommas } from '@/utils';
+import { useRouter } from 'next/router';
 
 export function UserProfile({ user, userPhotos }: UserProfileProps) {
+    const router = useRouter();
+
     return (
         <>
             <section className={styles.userProfileSection}>

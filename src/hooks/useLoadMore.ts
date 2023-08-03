@@ -1,5 +1,5 @@
 import { Posts } from '@/types';
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 const ARRAY_SIZE = 10;
 
@@ -7,13 +7,19 @@ export function useLoadItems(
     callback: (page: number) => () => Promise<Posts>,
     initialData: Posts = [],
 ) {
-    const [loading, setLoading] = React.useState(false);
-    const [items, setItems] = React.useState<Posts>(initialData);
-    const [hasNextPage, setHasNextPage] = React.useState<boolean>(
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState<Posts>(initialData);
+    const [hasNextPage, setHasNextPage] = useState<boolean>(
         initialData.length === ARRAY_SIZE,
     );
-    const [error, setError] = React.useState<Error>();
-    const [page, setPage] = React.useState<number>(1);
+    const [error, setError] = useState<Error>();
+    const [page, setPage] = useState<number>(1);
+
+    useEffect(() => {
+        setItems(initialData);
+        setHasNextPage(initialData.length === ARRAY_SIZE);
+        setPage(1);
+    }, [initialData]);
 
     async function loadMore() {
         setLoading(true);

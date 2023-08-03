@@ -9,6 +9,7 @@ import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
 import { useCallback } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import Link from 'next/link';
 
 export function UserGallery({
     userPhotos,
@@ -77,9 +78,12 @@ export function UserGallery({
                         );
                     })}
                     {items.length === 0 && (
-                        <p className={styles.profile__noPhotos}>
-                            {user.name} has not posted any photos yet!
-                        </p>
+                        <>
+                            <p className={styles.profile__noPhotos}>
+                                {user.name} has not posted any photos yet!
+                            </p>
+                            <Link href="/user/srz">👉 Sample Profile</Link>
+                        </>
                     )}
                 </div>
                 <InfiniteScroll
