@@ -116,7 +116,7 @@
     color: var(--inactive-color);
 }
 
-.postFooter__iconButton {
+.postFooter__iconButton:not(.likeButton) {
     cursor: not-allowed;
 }
 

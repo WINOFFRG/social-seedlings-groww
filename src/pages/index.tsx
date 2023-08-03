@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/index.module.css';
 import { HomeFeed } from '@/components/Feed';
 import { HtmlHead } from '@/components/MetaTags';
 import { RecentlyViewed } from '@/components/RecentlyViewed';

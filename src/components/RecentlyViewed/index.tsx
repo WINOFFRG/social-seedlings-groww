@@ -60,10 +60,12 @@ export function RecentlyViewed() {
     const router = useRouter();
 
     useEffect(() => {
-        recentUsers.forEach((user) => {
-            if (cache.has(user.id)) return;
-            cache.set(user.id, user);
-        });
+        if (cache.size === 0) {
+            recentUsers.reverse().forEach((user) => {
+                if (cache.has(user.id)) return;
+                cache.set(user.id, user);
+            });
+        }
     }, []);
 
     useEffect(() => {
@@ -79,10 +81,6 @@ export function RecentlyViewed() {
 
         setCachedUsers(currentUsers);
         setRecentUsers(currentUsers);
-
-        return () => {
-            console.log('[RecentlyViewed] Unmounted');
-        };
     }, [router.asPath, setRecentUsers]);
 
     return (

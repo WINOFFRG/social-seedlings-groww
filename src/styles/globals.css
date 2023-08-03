@@ -66,9 +66,12 @@ body {
 }
 
 @media (pointer: fine) {
-    :focus {
-        outline: 2px solid #833AB4; /* You can customize the color and size of the outline */
-        outline-offset: 4px; /* Customize the offset (space between element and outline) */
+    :focus-visible {
+        outline: 2px solid #833AB4;
+        outline-offset: 4px;
+    }
+    :active {
+        outline: none;
     }
 }
 
