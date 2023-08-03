@@ -7,9 +7,9 @@ import { unsplashFetch } from '@/utils';
 import { InfiniteScroll } from '../InfiniteScroll';
 import { useCallback, useEffect, useState } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { Posts } from '@/types';
 
-export function HomeFeed() {
-    const posts = useStore((state) => state.posts);
+export function HomeFeed({ posts }: { posts: Posts }) {
     const setPosts = useStore((state) => state.setPosts);
 
     const getMoreItems = useCallback((page: number) => {

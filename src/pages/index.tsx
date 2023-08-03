@@ -27,7 +27,7 @@ export default function Home({ posts, error }: HomeProps) {
             <HtmlHead title="Home Feed" />
             <StorySection />
             <div className={styles.sectionWrapper__container}>
-                <HomeFeed />
+                <HomeFeed posts={posts} />
                 <aside className={styles.rightSection}>
                     <RecentlyViewed />
                 </aside>

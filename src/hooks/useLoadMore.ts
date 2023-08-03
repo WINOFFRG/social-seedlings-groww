@@ -2,6 +2,7 @@ import { Posts } from '@/types';
 import { useEffect, useState } from 'react';
 
 const ARRAY_SIZE = 10;
+const INITIAL_PAGE = 2;
 
 export function useLoadItems(
     callback: (page: number) => () => Promise<Posts>,
@@ -13,13 +14,14 @@ export function useLoadItems(
         initialData.length === ARRAY_SIZE,
     );
     const [error, setError] = useState<Error>();
-    const [page, setPage] = useState<number>(1);
+    const [page, setPage] = useState<number>(INITIAL_PAGE);
 
-    // useEffect(() => {
-    //     setItems(initialData);
-    //     setHasNextPage(initialData.length === ARRAY_SIZE);
-    //     setPage(1);
-    // }, [initialData]);
+    // Change on initial data while scrolling can cause bugs
+    useEffect(() => {
+        setItems(initialData);
+        setHasNextPage(initialData.length === ARRAY_SIZE);
+        setPage(INITIAL_PAGE);
+    }, [initialData]);
 
     async function loadMore() {
         setLoading(true);
