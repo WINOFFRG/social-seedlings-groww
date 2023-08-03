@@ -147,6 +147,18 @@ export function BellIcon() {
         </SVG>
     );
 }
+
+export function SendIcon() {
+    return (
+        <SVG viewBox="0 0 2048 2048" width="1.4rem" height="1.4rem">
+            <path
+                fill="#fff"
+                d="M1997 960L18 1843l220-883L18 77l1979 883zM206 301l149 598h1190L206 301zm147 726l-147 592l1327-592H353z"
+            ></path>
+        </SVG>
+    );
+}
+
 // eslint-disable-next-line react/display-name
 const SVG = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
     (props, ref) => {

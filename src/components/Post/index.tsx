@@ -6,6 +6,7 @@ import {
     RibbonSave,
     ShareIcon,
     DottedIcon,
+    SendIcon,
 } from '../Icons';
 import { forwardRef, useRef, useState } from 'react';
 import { Blurhash } from 'react-blurhash';
@@ -141,10 +142,14 @@ export function PostHeader({ post }: MetaProps) {
 
 export function PostFooter({ post }: MetaProps) {
     const isClient = useIsClient();
+
     const likedPosts = useStore((state) => state.likedPosts);
     const addLikedPost = useStore((state) => state.addLikedPost);
     const removeLikedPost = useStore((state) => state.removeLikedPost);
+
+    const commmentRef = useRef<HTMLInputElement>(null);
     const [isLiked, setIsLiked] = useState(likedPosts.includes(post.id));
+    const [comment, setComment] = useState('');
 
     return (
         <footer
@@ -174,7 +179,12 @@ export function PostFooter({ post }: MetaProps) {
                         className={`${styles.postFooter__iconButton} ${styles.commentButton}`}
                         aria-label="Comment on post"
                         aria-disabled="true"
-                        disabled
+                        onClick={() => {
+                            console.log(commmentRef.current);
+                            if (commmentRef.current) {
+                                commmentRef.current.focus();
+                            }
+                        }}
                     >
                         <CommentsIcon />
                     </button>
@@ -210,6 +220,36 @@ export function PostFooter({ post }: MetaProps) {
             </div>
             <div className={styles.postCaption}>
                 {post.description ?? post.alt_description}
+            </div>
+            {comment && (
+                <div className={styles.postComments__message}>
+                    You: {comment}
+                </div>
+            )}
+            <div
+                className={`${styles.commentBar} `}
+                style={{
+                    display: comment ? 'none' : 'flex',
+                }}
+            >
+                <input
+                    ref={commmentRef}
+                    type="text"
+                    placeholder="Add a comment..."
+                />
+                <button
+                    className={`${styles.postFooter__iconButton} ${styles.sendIcon}`}
+                    aria-label="Comment on post"
+                    title="Comment on post"
+                    onClick={() => {
+                        setComment(commmentRef.current?.value ?? '');
+                        if (!commmentRef.current) return;
+                        commmentRef.current.blur();
+                        commmentRef.current.value = '';
+                    }}
+                >
+                    <SendIcon />
+                </button>
             </div>
         </footer>
     );
