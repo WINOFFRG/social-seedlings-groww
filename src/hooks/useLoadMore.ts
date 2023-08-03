@@ -15,11 +15,11 @@ export function useLoadItems(
     const [error, setError] = useState<Error>();
     const [page, setPage] = useState<number>(1);
 
-    useEffect(() => {
-        setItems(initialData);
-        setHasNextPage(initialData.length === ARRAY_SIZE);
-        setPage(1);
-    }, [initialData]);
+    // useEffect(() => {
+    //     setItems(initialData);
+    //     setHasNextPage(initialData.length === ARRAY_SIZE);
+    //     setPage(1);
+    // }, [initialData]);
 
     async function loadMore() {
         setLoading(true);
