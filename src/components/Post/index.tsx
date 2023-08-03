@@ -180,7 +180,6 @@ export function PostFooter({ post }: MetaProps) {
                         aria-label="Comment on post"
                         aria-disabled="true"
                         onClick={() => {
-                            console.log(commmentRef.current);
                             if (commmentRef.current) {
                                 commmentRef.current.focus();
                             }

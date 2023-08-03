@@ -1,4 +1,4 @@
-import { getPosts } from "./api/posts";
+import { getPosts } from './api/posts';
 import { getUser, getUserPhotos } from './api/user';
 
 export interface Post {
@@ -13,11 +13,9 @@ export interface Post {
     blur_hash: string;
     description: string;
     alt_description: string;
-    breadcrumbs: any[];
     urls: Urls;
     likes: number;
     liked_by_user: boolean;
-    current_user_collections: any[];
     sponsorship: null;
     user: User;
 }
@@ -101,7 +99,6 @@ export interface User {
     followed_by_user: boolean;
     photos: Photo[];
     badge: null;
-    tags: Tags;
     followers_count: number;
     following_count: number;
     allow_messages: boolean;
@@ -155,11 +152,6 @@ export interface Social {
     paypal_email: null;
 }
 
-export interface Tags {
-    custom: any[];
-    aggregated: Aggregated[];
-}
-
 export interface Aggregated {
     type: Type;
     title: string;
@@ -199,12 +191,10 @@ export interface CoverPhoto {
     blur_hash: string;
     description: string;
     alt_description: string;
-    breadcrumbs: any[];
     urls: Urls;
     links: CoverPhotoLinks;
     likes: number;
     liked_by_user: boolean;
-    current_user_collections: any[];
     sponsorship: null;
     topic_submissions: TopicSubmissions;
     premium: boolean;
